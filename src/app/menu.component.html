@@ -1,6 +1,7 @@
-<div class="content" style="background: black; height: 0vh; position: relative; ">
-    <nav class = "navbar is-info" role="navigation">
-      <nav class="navbar fixed-bottom navbar-expand-lg navbar-light bg-light" >
+<!-- <div style="background: red; z-index: 1000000;"> -->
+<div class="content" style="background: black; height: 0vh;">
+    <nav class = "navbar is-info" role="navigation" style="position: unset!important;">
+      <nav class="navbar fixed-bottom navbar-expand-lg navbar-light bg-light" style="position: absolute!important;" >
           <a class="btn btn-light" href = "" role = "button" routerLink = "/parte1">
               <img src="../../../assets/icon/food.png" style="width: 30px;" alt="">
           </a>
@@ -23,3 +24,4 @@
 <main [@routeAnimations]="prepareRoute(outlet)" class="content">
     <router-outlet #outlet="outlet"></router-outlet>
 </main>
+<!-- </div> -->

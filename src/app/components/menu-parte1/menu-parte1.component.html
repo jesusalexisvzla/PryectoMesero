@@ -1,32 +1,43 @@
-<div class="container-fluid" style="background: black; height: 100vh; position: relative;">
-    
-    <h1 style="color: white;">Comida</h1>
-    <!-- <i style="color:white" class="fa fa-user"></i> -->
-
-
-    <div style="width: 100%; height: 75%; overflow: auto; margin-top: 50px;">
-
-        <div style="background: gainsboro; width: 100%; min-height: 130px; height: auto; display: flex; margin-bottom: 20px;" *ngFor="let food of producto">
-            <div style=" width: 30%; margin: auto;text-align: center;">
-                <img src="../../../assets/icon/pizza.png" width="100%" style="max-width: 124px;" alt="">
+<div class="container-fluid" style="background: white; height: 100vh; position: relative; padding: 0;">
+    <nav class="navbar navbar-light bg-light" style="background: black!important;">
+        <a class="navbar-brand" href="#" style="color: white; display: flex; width: 100%; display: flex; justify-content: space-between; margin: 0;">
+            <div style="text-align: center; width: 100%; font-size: 30px;">
+                <!-- <i style="font-size: 30px; margin-right: 10px;" class="fa fa-user"></i> -->
+                Comidas
             </div>
-            
-            <div style="width: 70%; height: 100%;">
-                <h1 style="font-size: 18px; font-weight: bold;">Nombre: <span style="font-size: 16px; font-family: math;">{{food.nombre}}</span></h1>
-                <h1 style="font-size: 18px; font-weight: bold;">Precio:  <span style="font-size: 16px; font-family: math;">{{food.precio}}</span></h1>
-                <h1 style="font-size: 18px; font-weight: bold;">Descripción:  <span style="font-size: 16px; font-family: math;">{{food.descripcion}}</span></h1>
-                <!-- <i  class="bi bg-lime">asdasd</i> -->
-                <i></i>
+            <!-- <svg  style="font-size: 30px;" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-box-arrow-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+                <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+            </svg> -->
+        </a>
+    </nav>
+
+    <div  style=" background: F2F6F7; flex-direction: column; overflow: auto; width: 90%; height: 390px; margin: auto; margin-top: 20px; text-align: center; display: flex; align-items: center; height: calc(85% - 25px);">
+        <div style="background: white; width: 98%;  margin-top: 20px; z-index: 1000; height: auto; padding: 10px; box-shadow: 2px 1px 5px 0px;"  *ngFor="let food of producto">
+            <div style=" width: 100%; margin: auto;text-align: center;">
+                <img src="../../../assets/img/pizzapepperoni0.jpg" width="100%" alt="">
             </div>
-            
+
+            <div style="width: 100%; height: 100%; margin-top: 10px;">
+                    <div style=" display: flex; justify-content: space-around; height: 40px; align-items: center;">
+                        <h1 style="font-size: 30px; font-weight: bold;">{{food.nombre}}</h1>
+                        <h1 style="font-size: 30px; font-weight: bold;">${{food.precio}} </h1>
+                    </div>
+                    <!-- <h1 style="font-size: 18px; font-weight: bold;">Descripción: <br> <span style="font-size: 16px; font-family: math;">{{food.descripcion}}</span></h1> -->
+                    <p  style="font-size: 20px; margin-top: 10px;">{{food.descripcion}}</p>
+                    <!-- <i  class="bi bg-lime">asdasd</i> -->
+                    <i (click)="alerta()" style="font-size: 25px;">Ver mas...</i>
+                </div>
         </div>
-        
     </div>
-
+    <!-- <div class="seccion">  
+        <img src="../../../assets/icon/food.png" style="width: 40px;" alt="">
+        <img src="../../../assets/icon/drink.png" style="width: 40px;" alt="">
+        <img src="../../../assets/icon/donut.png" style="width: 40px;" alt="">
+        <img src="../../../assets/icon/beer.png" style="width: 40px;" alt="">
+        <img src="../../../assets/icon/carts.png" style="width: 40px;" alt="">
+    </div> -->
 </div>
-    
-    
-    
     <style>
         .seccion{
             display: flex;

@@ -15,6 +15,9 @@ import { ProductosComponent } from './components/productos/productos.component';
 import { CategoriasComponent } from './components/categorias/categorias.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { InfoproductoComponent } from './components/infoproducto/infoproducto.component';
+import { MeseroComponent } from './components/mesero/mesero.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MenuParte4Component,
     MenuComponent,
     ProductosComponent,
-    CategoriasComponent
+    CategoriasComponent,
+    InfoproductoComponent,
+    MeseroComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

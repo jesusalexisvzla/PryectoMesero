@@ -15,7 +15,7 @@ export class MenuParte1Component {
 
   producto: comida[] = [
     {
-      nombre: "pizza",
+      nombre: "Pizza",
       precio: 30,
       descripcion: "Rica pizza deliciosa que te encantara muchisimo"
     },
@@ -45,5 +45,9 @@ export class MenuParte1Component {
       descripcion: "Salchicha grande"
     }
   ]
+
+    alerta() {
+    alert('hola')
+  }
 
 }
