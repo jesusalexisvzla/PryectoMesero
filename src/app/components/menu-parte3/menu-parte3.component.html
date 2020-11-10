@@ -1,0 +1,53 @@
+<div style="background: black;">
+    <div class="container-lg" style="background: black; height: 100vh; position: relative;">
+    
+        <h1 style="color: white;">Snacks</h1>
+        <!-- <i style="color:white" class="fa fa-user"></i> -->
+    
+    
+        <div style="width: 100%; height: 75%; overflow: auto; margin-top: 50px;">
+    
+            <div style="background: gainsboro; width: 100%; min-height: 130px; height: auto; display: flex; margin-bottom: 20px;" *ngFor="let food of producto">
+                <div style=" width: 30%; margin: auto;text-align: center;">
+                    <img src="../../../assets/icon/pizza.png" width="100%" style="max-width: 124px;" alt="">
+                </div>
+                
+                <div style="width: 70%; height: 100%;">
+                    <h1 style="font-size: 18px; font-weight: bold;">Nombre: <span style="font-size: 16px; font-family: math;">{{food.nombre}}</span></h1>
+                    <h1 style="font-size: 18px; font-weight: bold;">Precio:  <span style="font-size: 16px; font-family: math;">{{food.precio}}</span></h1>
+                    <h1 style="font-size: 18px; font-weight: bold;">Descripción:  <span style="font-size: 16px; font-family: math;">{{food.descripcion}}</span></h1>
+                    <!-- <i  class="bi bg-lime">asdasd</i> -->
+                    <i></i>
+                </div>
+                
+            </div>
+            
+        </div>
+    
+    
+            <div class="seccion">  
+                <img src="../../../assets/icon/food.png" style="width: 40px;" alt="">
+                <img src="../../../assets/icon/drink.png" style="width: 40px;" alt="">
+                <img src="../../../assets/icon/donut.png" style="width: 40px;" alt="">
+                <img src="../../../assets/icon/beer.png" style="width: 40px;" alt="">
+                <img src="../../../assets/icon/carts.png" style="width: 40px;" alt="">
+                <!-- <img src="../../../assets/icon/car2.png" style="width: 40px;" alt=""> -->
+            </div>
+    
+    </div>
+    
+    
+    <style>
+        .seccion{
+            display: flex;
+            justify-content: space-around;
+            position: absolute;
+            background: #dbdcde;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            height: 49px;
+            padding: 4px;
+        }
+    </style>
+    </div>
