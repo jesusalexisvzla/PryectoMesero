@@ -24,7 +24,7 @@
         </div>
     </div>
     <div style=" background: F2F6F7; flex-direction: column; overflow: auto; width: 90%; height: 390px; margin: auto; margin-top: 20px; text-align: center; display: flex; align-items: center; height: calc(85% - 50px);">
-        <div style="background: white; width: 90%;  margin-top: 20px; z-index: 1000; height: auto; padding: 10px; box-shadow: 2px 1px 5px 0px;" *ngFor="let ped of pedidos">
+        <div style="background: white; width: 90%;  margin-top: 20px; z-index: 1000; height: auto; padding: 10px; box-shadow: 2px 2px 4px 0px; border-radius: 5px;" *ngFor="let ped of pedidos">
             <h1 class="linea" style="font-size: 18px; font-weight: bold; text-align: left; border:none; ">#<span style="font-size: 16px; font-family: math; font-weight: bold; border: unset;">{{ped.pedido}}</span></h1>
             <p style="font-size: 16px; font-family: math;"> {{ped.descripcion}}</p>
             <div style="display: flex; justify-content: space-evenly; margin-bottom: 10px; padding: 0;">
