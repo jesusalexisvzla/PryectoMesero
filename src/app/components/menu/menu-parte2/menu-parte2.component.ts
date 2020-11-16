@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { comida } from "../interfaces/prueba";
+import { comida } from "../../interfaces/prueba";
 
 @Component({
   selector: 'app-menu-parte2',

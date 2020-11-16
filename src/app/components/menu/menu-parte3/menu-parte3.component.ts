@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { comida } from "../interfaces/prueba";
+import { comida } from "../../interfaces/prueba";
 
 @Component({
-  selector: 'app-menu-parte4',
-  templateUrl: './menu-parte4.component.html',
-  styleUrls: ['./menu-parte4.component.css']
+  selector: 'app-menu-parte3',
+  templateUrl: './menu-parte3.component.html',
+  styleUrls: ['./menu-parte3.component.css']
 })
-export class MenuParte4Component {
+export class MenuParte3Component{
 
   constructor() { }
 
