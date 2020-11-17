@@ -6,7 +6,7 @@
                     <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                     <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
                   </svg>
-                Productos
+                Meseros
             </div>
            
             <svg style="font-size: 32px;" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -28,15 +28,14 @@
                <h1 style="font-family: monospace;font-size: 25px; margin-bottom: 0;">Meseros</h1>
             </div> -->
            
-            <!-- <div style="background: #FFFFFF; width: 100%;  margin-top: 10px; z-index: 1000; height: auto; padding: 10px; box-shadow: 1px 1px 1px 0px; height: 70px;display: flex;align-items: center;justify-content: space-between;">
+            <div style="background: #FFFFFF; width: 100%;  margin-top: 10px; z-index: 1000; height: auto; padding: 10px; box-shadow: 1px 1px 1px 0px; height: 70px;display: flex;align-items: center;justify-content: space-between;">
 
                 <div style="line-height: 10px; width: 100%; margin: 0;">
                     <p>Numero de meseros</p>
                     <p style="margin-bottom: 2px;">5</p>
                 </div>
-            </div> -->
+            </div>
             
-            <h3>Apartado de comida</h3>
             <div class="form-inline my-2 my-lg-0 aas" style="width: 100%; flex-wrap: nowrap;">
                 <input class="form-control mr-sm-2"  type="search" placeholder="Search" aria-label="Search" style="width: 70%; margin-right: 20px;">
                 <input type="submit"  style="float: right; border-radius: 2px; padding: 7px 19px; background: black; color: white; border: none;" value="Buscar"> 
@@ -50,15 +49,15 @@
 
             
             <div style="background: #F4F8FB; overflow-y: auto; width: 100%;  margin-top: 10px; z-index: 1000; padding: 10px; height: 125px;display: flex; flex-direction: column; height: calc(100% - 100px); padding: 0;">
-                <div style=" background: #FFFFFF;height: auto; margin-bottom: 5px; padding: 15px;  border-left: 5px solid black;" *ngFor="let v of informacionproducto" >
+                <div style=" background: #FFFFFF;height: auto; margin-bottom: 5px; padding: 15px;  border-left: 5px solid black;" *ngFor="let v of infomeseros" >
                         <div style="width: 100%; text-align: left;">
                             <div style="display: flex; width: 100%;">
                                 <h2 style="margin: 0; font-size: 20px; margin-bottom: 2px;">Nombre: </h2>
                                 <p style="margin: 0; margin-left: 10px;"> {{v.nombre}}</p>
                             </div>
                             <div style="display: flex; width: 100%;  position: relative;">
-                                <h2 style="margin: 0; font-size: 20px; margin-bottom: 2px;">precio: </h2>
-                                <p style="margin: 0; margin-left: 10px;">{{v.precio}}</p>
+                                <h2 style="margin: 0; font-size: 20px; margin-bottom: 2px;">Apellido: </h2>
+                                <p style="margin: 0; margin-left: 10px;">{{v.apellido}}</p>
                                 <div style="position: absolute; right: 0; font-size: 30px; top: -127%;">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
@@ -67,16 +66,13 @@
                                 </div>
                             </div>
                             <div style="display: flex; width: 100%;">
-                                <h2 style="margin: 0; font-size: 20px; margin-bottom: 2px;">Categoria:  </h2>
-                                <p style="margin: 0; margin-left: 10px;"> {{v.categoria}}</p>
+                                <h2 style="margin: 0; font-size: 20px; margin-bottom: 2px;">Clave:  </h2>
+                                <p style="margin: 0; margin-left: 10px;"> {{v.clave}}</p>
                                
                             </div>
-                            <div style="display: flex; flex-direction: column; width: 100%; position: relative;">
-                                <h2 style="margin: 0; font-size: 20px; margin-bottom: 2px;">Descripción: </h2>
-                                <div style="width: 100%;">
-                                    <p style="margin: 0;"> {{v.descripcion}}</p>
-
-                                </div>
+                            <div style="display: flex; width: 100%; position: relative;">
+                                <h2 style="margin: 0; font-size: 20px; margin-bottom: 2px;">Contraseña: </h2>
+                                <p style="margin: 0; margin-left: 10px;"> {{v.contra}}</p>
                                 <div style="position: absolute; right: 0; font-size: 30px; top: -50%;">
                                     <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                         <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"/>

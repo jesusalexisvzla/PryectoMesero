@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { nacho } from "../../components/interfaces/prueba";
+import { infoproducto } from "../../components/interfaces/prueba";
 
 
 @Component({
@@ -14,31 +14,50 @@ export class InfoproductoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  nachos: nacho[] = [
+  informacionproducto: infoproducto[] = [
     {
-      nombre:"Nachos chico"
+      nombre:"Nachos chico",
+      precio: 23,
+      categoria: 'Comida',
+      descripcion: 'Nachos extra queso'
     },
     {
-      nombre:"Nachos medians"
+      nombre:"Nachos chico",
+      precio: 23,
+      categoria: 'Comida',
+      descripcion: 'Nachos extra queso'
     },
     {
-      nombre:"Nachos grandes"
+      nombre:"Nachos chico",
+      precio: 23,
+      categoria: 'Comida',
+      descripcion: 'Nachos extra queso'
     },
     {
-      nombre:"Nachos con carne"
+      nombre:"Nachos chico",
+      precio: 23,
+      categoria: 'Comida',
+      descripcion: 'Nachos extra queso'
     },
     {
-      nombre:"Nachos con carne"
+      nombre:"Nachos chico",
+      precio: 23,
+      categoria: 'Comida',
+      descripcion: 'Nachos extra queso'
     },
     {
-      nombre:"Nachos con carne"
+      nombre:"Nachos chico",
+      precio: 23,
+      categoria: 'Comida',
+      descripcion: 'Nachos extra queso'
     },
     {
-      nombre:"Nachos con carne"
+      nombre:"Nachos chico",
+      precio: 23,
+      categoria: 'Comida',
+      descripcion: 'Nachos extra queso'
     },
-    {
-      nombre:"Nachos con carne"
-    },
+   
    
   ]
 

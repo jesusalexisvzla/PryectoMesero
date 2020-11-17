@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { cateogria } from '../interfaces/prueba';
 @Component({
   selector: 'app-productos',
   templateUrl: './productos.component.html',
@@ -9,19 +10,28 @@ export class ProductosComponent {
 
   formulario:  FormGroup
 
-  constructor(private _builder: FormBuilder) 
-  { 
+  constructor()  {  }
 
-    this.formulario = this._builder.group({
-      nombre: ['', Validators.required],
-      precio: ['', Validators.required],
-      tipo: ['', Validators.required],
-      descripcion: ['', Validators.required]
-    })
-  }
+  categorias: cateogria[] = [
+    {
+      nombre: "Comida",
+    },
+    {
+      nombre: "Bebida",
+    },
+    {
+      nombre: "Dulces",
+    },
+    {
+      nombre: "Botana",
+    },
+    {
+      nombre: "Alcohol",
+    },
+    {
+      nombre: "Sushi",
+    }
+  ]
 
-  enviar(values){
-      console.log(values);
-      
-  }
+
 }

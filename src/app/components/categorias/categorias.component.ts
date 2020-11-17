@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Builder } from 'protractor';
+import { cateogria } from "../../components/interfaces/prueba";
 
 
 @Component({
@@ -10,20 +9,27 @@ import { Builder } from 'protractor';
 })
 export class CategoriasComponent   {
 
-  formCategoria: FormGroup
-
-  constructor(private _builder:FormBuilder) {
-
-    this.formCategoria = this._builder.group({
-      nombre: ['', Validators.required],
-      tipo: ['', Validators.required]
-    })
-   }
-   enviar(values){
-    console.log(values);
-    
-}
-
+  
+  categorias: cateogria[] = [
+    {
+      nombre: "Comida",
+    },
+    {
+      nombre: "Bebida",
+    },
+    {
+      nombre: "Dulces",
+    },
+    {
+      nombre: "Botana",
+    },
+    {
+      nombre: "Alcohol",
+    },
+    {
+      nombre: "Sushi",
+    }
+  ]
 }
 
 

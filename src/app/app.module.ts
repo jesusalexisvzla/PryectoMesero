@@ -22,6 +22,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InfoproductoComponent } from './components/infoproducto/infoproducto.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { style } from '@angular/animations';
+import { AbcmeserosComponent } from './components/abcmeseros/abcmeseros.component';
+import { NuevomeseroComponent } from './components/nuevomesero/nuevomesero.component';
+import { VentadiaComponent } from './components/ventadia/ventadia.component';
+import { NuevacategoriaComponent } from './components/nuevacategoria/nuevacategoria.component';
+import { NuevoproductoComponent } from './components/nuevoproducto/nuevoproducto.component';
+import { ComprarproductoComponent } from './components/comprarproducto/comprarproducto.component';
+import { CarritoComponent } from './components/carrito/carrito.component';
 
 const rutas: Routes = [
   {
@@ -83,7 +90,14 @@ const rutas: Routes = [
     CategoriasComponent,
     InfoproductoComponent,
     MeseroComponent,
-    AdminComponent
+    AdminComponent,
+    AbcmeserosComponent,
+    NuevomeseroComponent,
+    VentadiaComponent,
+    NuevacategoriaComponent,
+    NuevoproductoComponent,
+    ComprarproductoComponent,
+    CarritoComponent
   ],
   imports: [
     BrowserModule,

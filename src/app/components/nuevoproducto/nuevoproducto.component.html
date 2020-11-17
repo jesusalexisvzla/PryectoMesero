@@ -1,0 +1,42 @@
+<div class="container-lg" style="padding: 0;">
+
+    <nav class="navbar navbar-light bg-light" style="background: black!important;">
+        <a class="navbar-brand" href="#" style="color: white;">
+            <svg style="margin-right: 10px; font-size: 30px;" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z"/>
+              </svg>
+        Registrar producto
+        </a>
+  </nav>
+
+    <div style="display: block; text-align: center;">
+        <img style="width: 100%; max-width: 160px;" src="../../../assets/img/registrar2.png" alt="">
+    </div> 
+ 
+    
+    <div class="container-lg">
+    <form [formGroup]="formulario" (ngSubmit)="enviar(formulario.value)">
+        <p style="margin: 8px 0px;">Nombre del producto:</p> 
+        <input formControlName="nombre" class="custom-select" type="text" name="nombre" style="background: none; border:1px solid black;display:block;padding:10px 0px;font-size: 12pt;width: 100%;text-indent:5px;"> 
+        <div *ngIf="formulario.get('nombre').hasError('required') && formulario.get('nombre').touched" style="color: red;">Es necesario el nombre</div>
+        <p style="margin: 8px 0px;">Precio:</p> 
+        <input formControlName="precio" class="custom-select"  name="email"  style="background: none; border:1px solid black;display:block;padding:10px 0px;font-size: 12pt;width: 100%;text-indent:5px;" type="number"> 
+        <div *ngIf="formulario.get('precio').hasError('required') && formulario.get('precio').touched" style="color: red;">Es necesario el precio</div>
+        <p style="margin: 8px 0px;">Categoria:</p>   
+        <div class="input-group mb-3">
+        <select formControlName="tipo"  class="custom-select" id="inputGroupSelect01" style="border: 1px solid black;">
+            <option selected>Seleccionar...</option>
+            <option value="1">Comida</option>
+            <option value="2">Golocinas</option>
+            <option value="3">Refresco</option>
+        </select>
+    </div>
+    <div *ngIf="formulario.get('tipo').hasError('required') && formulario.get('tipo').touched" style="color: red;">Es necesario el tipo</div>
+        <p style="margin: 8px 0px;">Descripción:</p> 
+        <textarea formControlName="descripcion" class="custom-select" style="background: none; border:1px solid black;display:block;padding:10px 0px;font-size: 12pt;width: 100%;text-indent:5px;height: 80px; margin-bottom: 15px;"></textarea> 
+        <input type="submit"  style="float: right; padding: 13px 40px; background: black; color: white; border: none;" value="GUARDAR"> 
+      </form>
+    </div> 
+
+</div>
