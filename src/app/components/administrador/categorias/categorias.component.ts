@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { cateogria } from "../../components/interfaces/prueba";
+import { cateogria } from "../../interfaces/prueba";
+import { RouterOutlet, Router } from '@angular/router';
 
 
 @Component({
@@ -8,7 +9,15 @@ import { cateogria } from "../../components/interfaces/prueba";
   styleUrls: ['./categorias.component.css']
 })
 export class CategoriasComponent   {
+  constructor(private route:Router){}
 
+  goNuevaCategoria(){
+    this.route.navigate(['/administrador/altacategoria']);
+  }
+  
+  goBack(){
+    this.route.navigate(['/administrador/']);
+  }
   
   categorias: cateogria[] = [
     {

@@ -6,6 +6,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 
+import { AdministradorComponent } from './components/administrador/administrador.component';
+import { AdminComponent } from './components/administrador/admin/admin.component';
+import { AbcmeserosComponent } from './components/administrador/abcmeseros/abcmeseros.component';
+import { ProductosComponent } from './components/administrador/productos/productos.component';
+import { CategoriasComponent } from './components/administrador/categorias/categorias.component';
+
+
+import { AltameseroComponent } from './components/administrador/abcmeseros/altamesero/altamesero.component';
+import { AltacategoriaComponent } from './components/administrador/categorias/altacategoria/altacategoria.component';
+import { AltaproductoComponent } from './components/administrador/productos/altaproducto/altaproducto.component';
+
 import { MenuComponent } from './components/menu/menu.component';
 import { MenuParte1Component } from './components/menu/menu-parte1/menu-parte1.component';
 import { MenuParte2Component } from './components/menu/menu-parte2/menu-parte2.component';
@@ -13,22 +24,17 @@ import { MenuParte3Component } from './components/menu/menu-parte3/menu-parte3.c
 import { MenuParte4Component } from './components/menu/menu-parte4/menu-parte4.component';
 
 import { MeseroComponent } from './components/mesero/mesero.component';
+import { PedidosComponent } from './components/mesero/pedidos/pedidos.component';
+import { VentadiaComponent } from './components//mesero/ventadia/ventadia.component';
 
-import { ProductosComponent } from './components/productos/productos.component';
 
-import { CategoriasComponent } from './components/categorias/categorias.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InfoproductoComponent } from './components/infoproducto/infoproducto.component';
-import { AdminComponent } from './components/admin/admin.component';
 import { style } from '@angular/animations';
-import { AbcmeserosComponent } from './components/abcmeseros/abcmeseros.component';
-import { NuevomeseroComponent } from './components/nuevomesero/nuevomesero.component';
-import { VentadiaComponent } from './components/ventadia/ventadia.component';
-import { NuevacategoriaComponent } from './components/nuevacategoria/nuevacategoria.component';
-import { NuevoproductoComponent } from './components/nuevoproducto/nuevoproducto.component';
 import { ComprarproductoComponent } from './components/comprarproducto/comprarproducto.component';
 import { CarritoComponent } from './components/carrito/carrito.component';
+
 
 const rutas: Routes = [
   {
@@ -73,7 +79,70 @@ const rutas: Routes = [
   },
   {
     path: 'mesero',
-    component: MeseroComponent
+    component: MeseroComponent,
+    children: [
+      {
+        path: '',
+        pathMatch: 'prefix',
+        redirectTo: 'pedidos'
+      },
+      {
+        path: 'pedidos',
+        component: PedidosComponent,
+        data: { animation: 'isLeft' }
+      },
+      {
+        path: 'ventas',
+        component: VentadiaComponent,
+        data: { animation: 'isRight' }
+      }
+    ]
+  },
+  {
+    path: 'administrador',
+    component: AdministradorComponent,
+    children: [
+      {
+        path: '',
+        pathMatch: 'prefix',
+        redirectTo: 'admin'
+      },
+      {
+        path: 'admin',
+        component: AdminComponent,
+        data: { animation: 'isMiddle' }
+      },
+      {
+        path:'meseros',
+        component: AbcmeserosComponent,
+        data: { animation: 'isRight' }
+      },
+      {
+        path:'productos',
+        component: ProductosComponent,
+        data: { animation: 'isRight' }
+      },
+      {
+        path:'categorias',
+        component: CategoriasComponent,
+        data: { animation: 'isRight' }
+      },
+      {
+        path:'altamesero',
+        component: AltameseroComponent,
+        data: { animation: 'isFarRight' }
+      },
+      {
+        path:'altacategoria',
+        component: AltacategoriaComponent,
+        data: { animation: 'isFarRight' }
+      },
+      {
+        path:'altaproducto',
+        component: AltaproductoComponent,
+        data: { animation: 'isFarRight' }
+      }       
+    ]
   }
 ]
 
@@ -81,23 +150,25 @@ const rutas: Routes = [
   declarations: [
     AppComponent,
     LoginComponent,
+    AdministradorComponent,
+    AdminComponent,
+    AbcmeserosComponent,
+    AltameseroComponent,
+    ProductosComponent,
+    AltaproductoComponent,
+    CategoriasComponent,
+    AltacategoriaComponent,
     MenuComponent,
     MenuParte1Component,
     MenuParte2Component,
     MenuParte3Component,
     MenuParte4Component,
-    ProductosComponent,
-    CategoriasComponent,
     InfoproductoComponent,
     MeseroComponent,
-    AdminComponent,
-    AbcmeserosComponent,
-    NuevomeseroComponent,
     VentadiaComponent,
-    NuevacategoriaComponent,
-    NuevoproductoComponent,
     ComprarproductoComponent,
-    CarritoComponent
+    CarritoComponent,
+    PedidosComponent,
   ],
   imports: [
     BrowserModule,

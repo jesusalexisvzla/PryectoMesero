@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ventadia } from "../../components/interfaces/prueba";
+import { Component } from '@angular/core';
+import { ventadia } from "../../interfaces/prueba";
 
 
 @Component({
@@ -7,14 +7,9 @@ import { ventadia } from "../../components/interfaces/prueba";
   templateUrl: './ventadia.component.html',
   styleUrls: ['./ventadia.component.css']
 })
-export class VentadiaComponent implements OnInit {
+export class VentadiaComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
-
-
   
   ventasdia: ventadia[] = [
     {

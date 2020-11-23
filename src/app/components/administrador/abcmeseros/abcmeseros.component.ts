@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { infoesero } from "../../components/interfaces/prueba";
-
-
+import { infoesero } from "../../../components/interfaces/prueba";
+import { RouterOutlet, Router } from '@angular/router';
 
 @Component({
   selector: 'app-abcmeseros',
@@ -9,11 +8,16 @@ import { infoesero } from "../../components/interfaces/prueba";
   styleUrls: ['./abcmeseros.component.css']
 })
 export class AbcmeserosComponent  {
+  constructor(private route:Router){}
 
-  constructor() { }
-
+  goNuevoMesero(){
+    this.route.navigate(['/administrador/altamesero']);
+  }
   
-
+  goBack(){
+    this.route.navigate(['/administrador/']);
+  }
+  
   infomeseros: infoesero[] = [
     {
       clave: 'dxfsas12',
@@ -47,5 +51,4 @@ export class AbcmeserosComponent  {
     },
     
   ]
-
 }

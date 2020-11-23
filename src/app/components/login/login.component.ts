@@ -24,8 +24,10 @@ export class LoginComponent {
     this.codigo = code
     if (this.codigo == "cliente") {
       this.route.navigate(['/menu']);
-    }if (this.codigo == "mesero") {
+    }else if (this.codigo == "mesero") {
       this.route.navigate(['/mesero']);
+    }else if (this.codigo == "admin") {
+      this.route.navigate(['/administrador']);
     }
   }
 }

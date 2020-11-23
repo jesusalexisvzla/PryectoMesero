@@ -10,9 +10,6 @@ export class MenuParte4Component {
 
   constructor() { }
 
-  // ngOnInit(): void {
-  // }
-
   producto: comida[] = [
     {
       nombre: "pizza",
