@@ -41,3 +41,12 @@ export interface infoproducto{
     categoria: string,
     descripcion: string
 }
+
+export interface pedidococina{
+    pedido: number,
+    producto: string,
+    cantidad: number,
+    descripcion: string,
+    hora: string,
+    fecha: string
+}

@@ -34,6 +34,10 @@ import { InfoproductoComponent } from './components/infoproducto/infoproducto.co
 import { style } from '@angular/animations';
 import { ComprarproductoComponent } from './components/comprarproducto/comprarproducto.component';
 import { CarritoComponent } from './components/carrito/carrito.component';
+import { ProcesoComponent } from './components/cocina/proceso/proceso.component';
+import { RecibidosComponent } from './components/cocina/recibidos/recibidos.component';
+import { FinalizadosComponent } from './components/cocina/finalizados/finalizados.component';
+import { CocinaComponent } from './components/cocina/cocina.component';
 
 
 const rutas: Routes = [
@@ -169,6 +173,10 @@ const rutas: Routes = [
     ComprarproductoComponent,
     CarritoComponent,
     PedidosComponent,
+    ProcesoComponent,
+    RecibidosComponent,
+    FinalizadosComponent,
+    CocinaComponent,
   ],
   imports: [
     BrowserModule,

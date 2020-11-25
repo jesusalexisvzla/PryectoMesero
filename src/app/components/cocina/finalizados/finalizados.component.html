@@ -1,0 +1,84 @@
+<div class="container-lg" style="padding: 0; height: 100vh;">
+    <!-- <nav class="navbar navbar-light bg-light" style="background: black!important;" >
+        <a class="navbar-brand" href="#" style="color: white; display: flex; width: 100%; display: flex; justify-content: space-between; margin: 0;">
+            <div style="margin-bottom: 32px;">
+                <i style="font-size: 30px; margin-right: 10px;" class="fa fa-user"></i>
+                Mesero
+            </div>
+           
+            <svg  style="font-size: 30px;" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-box-arrow-right" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+                <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+            </svg>
+        </a>
+      
+        <img src="../../../assets/img/MeseronlineLogo.png" style="position: absolute; width: 150px; left: 33%;" alt="">
+        <br>
+    </nav> -->
+<div style=" background: white; flex-direction: column; overflow: auto; width: 100%; height: 390px; margin: auto; text-align: center; display: flex; align-items: center; height: calc(85% - 45px); padding: 7px; transform: translateY(70px);">
+    <div style="background: white; width: 100%;  margin-top: 10px; z-index: 1000; height: auto; padding: 10px; box-shadow: 2px 2px 4px 0px; border-radius: 5px;" *ngFor="let ped of pedidos">
+        <h1 class="linea" style="font-size: 18px; font-weight: bold; text-align: left; border:none; ">#<span style="font-size: 16px; font-family: math; font-weight: bold; border: unset;">{{ped.pedido}}</span></h1>
+        <div style="display: flex; text-align: center; justify-content: center;">
+            <div style="margin-right: 20px;font-size: 25px;">
+                <p>{{ped.producto}}</p>
+            </div>
+            <div style="font-size: 25px;">
+                <p>X{{ped.cantidad}}</p>
+            </div>
+
+        </div>
+        
+        <div style="text-align: left; margin: 0; font-weight: 700;">
+            <p style="margin: 0;">Descripcion:</p>
+
+        </div>
+        <p style="font-size: 16px; font-family: math; text-align: justify;"> {{ped.descripcion}}</p>
+        <div style="display: flex; justify-content: space-between; margin-bottom: 10px; padding: 0;">
+            <h1 style="font-size: 18px; font-weight: bold;"><span style="font-size: 16px; font-family: math; font-weight: bold;">{{ped.hora}}</span></h1>
+            <h1 style="font-size: 18px; font-weight: bold;"><span style="font-size: 16px; font-family: math; font-weight: bold;">{{ped.fecha}}</span></h1>
+        </div>
+    </div>
+</div>
+</div>
+<style>
+.nav{
+    text-align: center;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    border: 1px solid black;
+}
+
+.nave{
+    border-right: 1px solid black;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nave:active{
+    background: rgb(241, 236, 236);
+}
+
+.linea{
+    margin: 0;
+    padding: 0;
+    height: 30px;
+}
+
+.nav2{
+    background: white;
+    /* width: calc(100% - 20px); */
+    height: 45px;
+    /* position: absolute; */
+    /* top: 75px; */
+    /* left: 0; */
+    /* right: 0; */
+    margin: auto;
+    border-radius: 5pt;
+    box-shadow: 0px 5px 6px -4px rgba(0, 0, 0, 0.5);
+    background: #fefefe;
+    /* margin-bottom: 70px; */
+}
+</style>

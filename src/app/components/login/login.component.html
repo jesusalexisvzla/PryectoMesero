@@ -11,14 +11,14 @@
 <body style="background: black;">
     <div class="container-lg contenedor">
         <div class="container-lg">
-            <img src="../../../assets/img/MeseronlineLogo.png" style="width: 100%" alt="">
+            <img src="../../../assets/img/MeseronlineLogo.png" style="width: 100%; max-width: 400px;" alt="">
 
         </div>
         <!-- <div>
             <img style="width: 100%; max-width: 300px;" src="../../../assets/img/mesero.png" alt="">
         </div> -->
 
-         <input type="text" #code style="text-align: center; max-width: 73%; margin-top: 40px; width: 90%; text-indent:5px; height: 35px; text-transform: uppercase;" placeholder="Codigo" required="" />
+         <input type="text" #code style="text-align: center; max-width: 73%; margin-top: 40px; width: 90%; text-indent:5px; height: 35px; text-transform: uppercase; max-width: 250px;" placeholder="Codigo" required="" />
          <input style=" font-family: 'Noto Sans', sans-serif; background: white; padding: 8px 10px; border-radius: 7px;border: none; margin-top: 20px" type="submit" value="Iniciar Sessión" (click)="getCodeVal(code.value)">
         </div>   
 </body>
