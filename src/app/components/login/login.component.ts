@@ -28,6 +28,8 @@ export class LoginComponent {
       this.route.navigate(['/mesero']);
     }else if (this.codigo == "admin") {
       this.route.navigate(['/administrador']);
+    }else if (this.codigo == "cocina") {
+      this.route.navigate(['/cocina']);
     }
   }
 }

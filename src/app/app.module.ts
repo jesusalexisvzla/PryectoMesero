@@ -27,17 +27,17 @@ import { MeseroComponent } from './components/mesero/mesero.component';
 import { PedidosComponent } from './components/mesero/pedidos/pedidos.component';
 import { VentadiaComponent } from './components//mesero/ventadia/ventadia.component';
 
-
+import { CocinaComponent } from './components/cocina/cocina.component';
+import { RecibidosComponent } from './components/cocina/recibidos/recibidos.component';
+import { ProcesoComponent } from './components/cocina/proceso/proceso.component';
+import { FinalizadosComponent } from './components/cocina/finalizados/finalizados.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InfoproductoComponent } from './components/infoproducto/infoproducto.component';
 import { style } from '@angular/animations';
 import { ComprarproductoComponent } from './components/comprarproducto/comprarproducto.component';
 import { CarritoComponent } from './components/carrito/carrito.component';
-import { ProcesoComponent } from './components/cocina/proceso/proceso.component';
-import { RecibidosComponent } from './components/cocina/recibidos/recibidos.component';
-import { FinalizadosComponent } from './components/cocina/finalizados/finalizados.component';
-import { CocinaComponent } from './components/cocina/cocina.component';
+import { pathToFileURL } from 'url';
 
 
 const rutas: Routes = [
@@ -117,35 +117,61 @@ const rutas: Routes = [
         data: { animation: 'isMiddle' }
       },
       {
-        path:'meseros',
+        path: 'meseros',
         component: AbcmeserosComponent,
         data: { animation: 'isRight' }
       },
       {
-        path:'productos',
+        path: 'productos',
         component: ProductosComponent,
         data: { animation: 'isRight' }
       },
       {
-        path:'categorias',
+        path: 'categorias',
         component: CategoriasComponent,
         data: { animation: 'isRight' }
       },
       {
-        path:'altamesero',
+        path: 'altamesero',
         component: AltameseroComponent,
         data: { animation: 'isFarRight' }
       },
       {
-        path:'altacategoria',
+        path: 'altacategoria',
         component: AltacategoriaComponent,
         data: { animation: 'isFarRight' }
       },
       {
-        path:'altaproducto',
+        path: 'altaproducto',
         component: AltaproductoComponent,
         data: { animation: 'isFarRight' }
       }       
+    ]
+  },
+  {
+    path: 'cocina',
+    component: CocinaComponent,
+    children: [
+      {
+        path: '',
+        pathMatch: 'prefix',
+        redirectTo: 'recibidos'
+      },
+      {
+        path: 'recibidos',
+        component: RecibidosComponent,
+        data: { animation: 'isMiddle' }
+      },
+      {
+        path: 'proceso',
+        component: ProcesoComponent,
+        data: { animation: 'isRight' }
+      },
+      {
+        path: 'finalizados',
+        component: FinalizadosComponent,
+        data: { animation: 'isFarRight' }
+      },
     ]
   }
 ]

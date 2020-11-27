@@ -8,21 +8,18 @@ import { RouterOutlet, Router } from '@angular/router';
   styleUrls: ['./altacategoria.component.css']
 })
 export class AltacategoriaComponent {
-  constructor(private route:Router){}
+  constructor(private route:Router, private _builder:FormBuilder){this.formCategoria = this._builder.group({
+      nombre: ['', Validators.required],
+      tipo: ['', Validators.required]
+    })
+  }
 
   goBack(){
     this.route.navigate(['/administrador/meseros']);
   }
-  // formCategoria: FormGroup
+  formCategoria: FormGroup
 
-  // // constructor(private _builder:FormBuilder) {
-
-  // //   this.formCategoria = this._builder.group({
-  // //     nombre: ['', Validators.required],
-  // //     tipo: ['', Validators.required]
-  // //   })
-  // //  }
-  // //  enviar(values){
-  // //   console.log(values);
-  // // }
+   enviar(values){
+    console.log(values);
+  }
 }

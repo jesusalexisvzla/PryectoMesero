@@ -8,7 +8,12 @@ import { RouterOutlet, Router } from '@angular/router';
   styleUrls: ['./altaproducto.component.css']
 })
 export class AltaproductoComponent {
-  constructor(private route:Router){}
+  constructor(private route:Router, private _builder: FormBuilder){this.formulario = this._builder.group({
+      nombre: ['', Validators.required],
+      precio: ['', Validators.required],
+      tipo: ['', Validators.required],
+      descripcion: ['', Validators.required]
+    })}
 
   goBack(){
     this.route.navigate(['/administrador/productos']);
@@ -16,20 +21,9 @@ export class AltaproductoComponent {
 
   formulario:  FormGroup
 
-  // constructor(private _builder: FormBuilder) 
-  // { 
-
-  //   this.formulario = this._builder.group({
-  //     nombre: ['', Validators.required],
-  //     precio: ['', Validators.required],
-  //     tipo: ['', Validators.required],
-  //     descripcion: ['', Validators.required]
-  //   })
-  // }
-
-  // enviar(values){
-  //     console.log(values);
+  enviar(values){
+      console.log(values);
       
-  // }
+  }
 
 }
