@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RouterOutlet, Router } from '@angular/router';
 import { comida } from "../../interfaces/prueba";
 
 @Component({
@@ -8,7 +9,11 @@ import { comida } from "../../interfaces/prueba";
 })
 export class MenuParte1Component {
 
-  constructor() { }
+  constructor(private route:Router){}
+
+  goProducto(){
+    this.route.navigate(['/comprar']);
+  }
 
   // ngOnInit(): void {
   // }

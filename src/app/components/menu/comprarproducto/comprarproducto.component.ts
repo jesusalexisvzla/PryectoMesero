@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { nacho } from '../interfaces/prueba';
+import { nacho } from '../../interfaces/prueba';
 
 @Component({
   selector: 'app-comprarproducto',

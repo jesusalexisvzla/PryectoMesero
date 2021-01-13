@@ -34,7 +34,7 @@ import { FinalizadosComponent } from './components/cocina/finalizados/finalizado
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InfoproductoComponent } from './components/infoproducto/infoproducto.component';
 import { style } from '@angular/animations';
-import { ComprarproductoComponent } from './components/comprarproducto/comprarproducto.component';
+import { ComprarproductoComponent } from './components/menu/comprarproducto/comprarproducto.component';
 import { CarritoComponent } from './components/carrito/carrito.component';
 import { pathToFileURL } from 'url';
 import { HttpClientModule } from '@angular/common/http';
@@ -80,6 +80,7 @@ const rutas: Routes = [
         component: MenuParte4Component,
         data: { animation: 'isFarRight' }
       }
+      
     ]
   },
   {
@@ -146,6 +147,11 @@ const rutas: Routes = [
         path: 'altaproducto',
         component: AltaproductoComponent,
         data: { animation: 'isFarRight' }
+      },
+      {
+        path: 'productoss',
+        component: ProductossComponent,
+        data: { animation: 'isFarRight' }
       }       
     ]
   },
@@ -174,6 +180,10 @@ const rutas: Routes = [
         data: { animation: 'isFarRight' }
       },
     ]
+  },
+  {
+    path: 'comprar',
+    component: ComprarproductoComponent
   }
 ]
 

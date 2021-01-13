@@ -7,10 +7,10 @@
             </div>
 
             <div style="width: 100%; height: 100%; margin-top: 10px;">
-                    <div style=" display: flex; justify-content: space-around; height: 40px; align-items: center;">
+                    <button style=" display: flex; justify-content: space-around; height: 40px; align-items: center;" (click)= "goProducto()">
                         <h1 style="font-size: 30px; font-weight: bold;">{{food.nombre}}</h1>
                         <h1 style="font-size: 30px; font-weight: bold;">${{food.precio}} </h1>
-                    </div>
+                    </button>
                     <p  style="font-size: 20px; margin-top: 10px;">{{food.descripcion}}</p>
                     <!-- <i (click)="alerta()" style="font-size: 25px;">Ver mas...</i> -->
                 </div>

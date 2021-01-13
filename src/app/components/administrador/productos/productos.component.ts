@@ -52,6 +52,10 @@ export class ProductosComponent implements OnInit{
   goNuevoProducto(){
     this.route.navigate(['/administrador/altaproducto']);
   }
+
+  goProducto(){
+    this.route.navigate(['/administrador/productoss']);
+  }
   
   goBack(){
     this.route.navigate(['/administrador/']);
