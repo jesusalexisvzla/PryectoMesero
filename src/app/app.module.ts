@@ -12,7 +12,6 @@ import { AbcmeserosComponent } from './components/administrador/abcmeseros/abcme
 import { ProductosComponent } from './components/administrador/productos/productos.component';
 import { CategoriasComponent } from './components/administrador/categorias/categorias.component';
 
-
 import { AltameseroComponent } from './components/administrador/abcmeseros/altamesero/altamesero.component';
 import { AltacategoriaComponent } from './components/administrador/categorias/altacategoria/altacategoria.component';
 import { AltaproductoComponent } from './components/administrador/productos/altaproducto/altaproducto.component';
@@ -38,6 +37,8 @@ import { style } from '@angular/animations';
 import { ComprarproductoComponent } from './components/comprarproducto/comprarproducto.component';
 import { CarritoComponent } from './components/carrito/carrito.component';
 import { pathToFileURL } from 'url';
+import { HttpClientModule } from '@angular/common/http';
+import { ProductossComponent } from './components/administrador/productoss/productoss.component';
 
 
 const rutas: Routes = [
@@ -203,9 +204,11 @@ const rutas: Routes = [
     RecibidosComponent,
     FinalizadosComponent,
     CocinaComponent,
+    ProductossComponent,
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(rutas, {

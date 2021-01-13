@@ -1,54 +1,71 @@
 import { Component, OnInit } from '@angular/core';
 import { infoesero } from "../../../components/interfaces/prueba";
 import { RouterOutlet, Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { ServiceService } from 'src/app/servicios/servicio.service';
 
 @Component({
   selector: 'app-abcmeseros',
   templateUrl: './abcmeseros.component.html',
   styleUrls: ['./abcmeseros.component.css']
 })
-export class AbcmeserosComponent  {
-  constructor(private route:Router){}
+export class AbcmeserosComponent implements OnInit {
+  constructor(private route:Router, private _http: HttpClient, private _datosAServicio: ServiceService){}
 
+  public numeroMeseros;
+  meseros = [];
+
+  ngOnInit(){
+    let filter = {
+      where: {
+        estatus: 1
+      }
+    }
+    this._http.get('http://localhost:3000/api/Meseros?filter='+ JSON.stringify(filter))
+    .subscribe(
+      (datos: any[])=> this.meseros = datos),
+      // this. = this.datos.length
+      err => console.log(err);
+
+      this.size()
+
+  }
+
+  size(){
+    let filter = {
+      where: {
+        estatus: 1
+      }
+    }
+    this._http.get('http://localhost:3000/api/Meseros?filter='+ JSON.stringify(filter))
+    .subscribe(
+      (datos: any[])=> this.numeroMeseros = datos.length),
+      err => console.log(err);
+  }
   goNuevoMesero(){
     this.route.navigate(['/administrador/altamesero']);
+    this.sendArray(0);
   }
   
   goBack(){
     this.route.navigate(['/administrador/']);
   }
-  
-  infomeseros: infoesero[] = [
-    {
-      clave: 'dxfsas12',
-      nombre: "ruperto",
-      apellido: "peruano",
-      contra: 'peruano123',
-    },
-    {
-      clave: 'dxfsada42',
-      nombre: "rodrigo",
-      apellido: "likeito",
-      contra: 'likito123',
-    },
-    {
-      clave: 'dddds2',
-      nombre: "albin",
-      apellido: "yakiroti",
-      contra: 'asdas123',
-    },
-    {
-      clave: 'dsdd',
-      nombre: "jeferson",
-      apellido: "gutierritos",
-      contra: 'asdsad230',
-    },
-    {
-      clave: 'dxsadas8',
-      nombre: "loca123",
-      apellido: 'reloca',
-      contra: 'loquis132',
-    },
+
+  sendArray(datos) {
+    this._datosAServicio.setArray(datos);
+  }
+
+  actualizar(s:any){
+    this.goNuevoMesero()
+    this.sendArray(s);
     
-  ]
+  }
+
+  eliminar(s:string) {
+    this._http.patch('http://localhost:3000/api/Meseros/' + s, 
+    {
+      estatus: 0
+    })
+    .subscribe(err => console.log(err)) 
+  }
 }

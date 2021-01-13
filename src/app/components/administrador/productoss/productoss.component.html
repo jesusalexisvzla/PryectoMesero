@@ -1,15 +1,15 @@
 <div class="content" style="padding: 0; height: 100vh; background: #f4f8fb;">
     <nav class="navbar navbar-light bg-light" style="background: black !important;">
         <a class="navbar-brand" style="color: white; display: flex; width: 100%; display: flex; justify-content: space-between; margin: 0;">
-            <button class="btn_black" (click)="goBack()">
+            <button class="btn_black" >
                 <svg style="margin-right: 10px; font-size: 30px;" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-left-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                     <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5z" />
                 </svg>
-                Meseros
+                Productos
             </button>
 
-            <button class="btn_black" (click)="goNuevoMesero()">
+            <button class="btn_black">
                 <svg style="font-size: 30px;" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg" routerLink="/nuevomesero">
                     <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                     <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
@@ -23,26 +23,27 @@
 
             <div class="no_meseros">
                 <div style="line-height: 10px; width: 100%; margin: 0;">
-                    <p>Numero de meseros registrados</p>
-                    <p style="margin-bottom: 2px;">{{numeroMeseros}}</p>
+                    <p>Numero de productos registrados</p>
+                    <p style="margin-bottom: 2px;">{{numeroProductos}}</p>
                 </div>
             </div>
-
+            
             <div class="form-inline my-2 my-lg-0 aas" style="width: 100%; flex-wrap: nowrap;">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" style="width: 70%; margin-right: 5px;" />
                 <input type="submit" class="btn_buscar"  value="Buscar" />
             </div>
-
+            <!-- <p style="margin-bottom: 2px;">{{productos.nombre}}</p> -->
+            
             <div class="cont_cards_meseros">
-                <div class="card_mesero" *ngFor="let x of meseros">
+                <div class="card_mesero" *ngFor="let x of productos">
                     <div style="width: 100%; text-align: left;">
                         <div style="display: flex; width: 100%;">
                             <h2 style="margin: 0; font-size: 20px; margin-bottom: 2px;">Nombre:</h2>
-                            <p style="margin: 0; margin-left: 5px;">{{x.nombreMesero}}</p>
+                            <p style="margin: 0; margin-left: 5px; ">{{x.nombre}}</p>
                         </div>
                         <div style="display: flex; width: 100%; position: relative;">
-                            <h2 style="margin: 0; font-size: 20px; margin-bottom: 2px;">Apellido:</h2>
-                            <p style="margin: 0; margin-left: 5px;">{{x.apellidoMesero}}</p>
+                            <h2 style="margin: 0; font-size: 20px; margin-bottom: 2px;">Precio: </h2>
+                            <p style="margin: 0; margin-left: 5px;">${{x.precio}}</p>
                             <div style="position: absolute; right: 0; font-size: 30px; top: -127%;">
                                 <svg (click)="actualizar(x)" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path
@@ -55,14 +56,11 @@
                                 </svg>
                             </div>
                         </div>
-                        <div style="display: flex; width: 100%;">
-                            <h2 style="margin: 0; font-size: 20px; margin-bottom: 2px;">Clave:</h2>
-                            <p style="margin: 0; margin-left: 5px;">{{x.claveMesero}}</p>
-                        </div>
-                        <div style="display: flex; width: 100%; position: relative;">
-                            <h2 style="margin: 0; font-size: 20px; margin-bottom: 2px;">Contraseña:</h2>
-                            <p style="margin: 0; margin-left: 5px;">{{x.contraMesero}}</p>
-                            <div style="position: absolute; right: 0; font-size: 30px; top: -50%;">
+
+                        <div style="display: flex; flex-direction: column; width: 100%; position: relative;">
+                            <h2 style="margin: 0; font-size: 20px; margin-bottom: 2px;">Descripcion: </h2>
+                            <p style="margin: 0; width: 80%; text-align: justify;" >{{x.descripcion}}</p>
+                            <div style="position: absolute; right: 0; font-size: 30px; top: 35%;">
                                 <svg (click)="eliminar(x.id)"  width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                     <path 
                                         fill-rule="evenodd"
