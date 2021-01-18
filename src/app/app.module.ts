@@ -73,11 +73,16 @@ const rutas: Routes = [
       {
         path: 'parte3',
         component: MenuParte3Component,
-        data: { animation: 'isRight' }
+        data: { animation: 'isMiddle' }
       },
       {
         path: 'parte4',
         component: MenuParte4Component,
+        data: { animation: 'isRight' }
+      },
+      {
+        path: 'carrito',
+        component: CarritoComponent,
         data: { animation: 'isFarRight' }
       }
       

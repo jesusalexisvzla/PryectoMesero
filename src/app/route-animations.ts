@@ -35,7 +35,6 @@ export const fader =
 
 export const slider =
   trigger('routeAnimations', [
-    transition('isTop => isBottom', slideTo('left') ),
     transition('* => isFarLeft', slideTo('left') ),
     transition('isFarLeft => *', slideTo('right') ),
     transition('isLeft => isMiddle', slideTo('right') ),
@@ -45,8 +44,7 @@ export const slider =
     transition('isRight => isLeft', slideTo('left') ),
     transition('isRight => isMiddle', slideTo('left') ),
     transition('isFarRight => *', slideTo('left') ),
-    transition('* => isFarRight', slideTo('right') ),
-    transition('* => isAlsoFarRight', slideTo('right') )
+    transition('* => isFarRight', slideTo('right') )
   ]);
 
 
