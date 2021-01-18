@@ -58,7 +58,6 @@ export class AbcmeserosComponent implements OnInit {
   actualizar(s:any){
     this.goNuevoMesero()
     this.sendArray(s);
-    
   }
 
   eliminar(s:string) {

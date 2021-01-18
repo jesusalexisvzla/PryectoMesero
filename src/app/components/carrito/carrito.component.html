@@ -1,54 +1,138 @@
+
 <div class="container-fluid" style="background: white; height: 100vh; position: relative; padding: 0;">
     <nav class="navbar navbar-light bg-light" style="background: black!important;">
         <a class="navbar-brand" href="#" style="color: white; display: flex; width: 100%; display: flex; justify-content: space-between; margin: 0;">
             <div style="text-align: center; width: 100%; font-size: 30px;">
-                <!-- <i style="font-size: 30px; margin-right: 10px;" class="fa fa-user"></i> -->
-                <img src="../../../assets/img/logo 1.png" style="width: 260px" alt="">
-
-                <!-- Comidas -->
+                <img src="../../../assets/img/MeseronlineLogo.png" style="width: 150px;" alt="">
             </div>
         </a>
     </nav>
 
-    <!-- <div  style="max-width: 500px; background: F2F6F7; flex-direction: column; overflow: auto; width: 90%; height: 390px; margin: auto; margin-top: 20px; text-align: center; display: flex; align-items: center; height: calc(85% - 25px);">
-        <h1 style="font-family: monospace;font-size: 45px;">Carrito</h1>
-        <div style="background: white; width: 98%;  margin-top: 20px; z-index: 1000; height: auto; padding: 10px; box-shadow: 2px 2px 4px 0px;"  >
-            <div style=" width: 100%; margin: auto;text-align: center;">
-                <img src="../../../assets/img/pizzapepperoni0.jpg" width="100%" alt="">
-            </div>
 
-            <div style="width: 100%; height: 100%; margin-top: 10px;">
-                    <div style=" display: flex; justify-content: space-around; height: 40px; align-items: center;">
-                        <h1 style="font-size: 30px; font-weight: bold;">coca</h1>
-                        <h1 style="font-size: 30px; font-weight: bold;">$23 </h1>
-                    </div>
-                    <p  style="font-size: 20px; margin-top: 10px;">delisioasa</p>
-                </div>
-        </div>
-    </div> -->
-
-    <div class="col-100">
+     <div *ngIf="!totalPagar" class="col-100">
         <div style="display: flex; flex-direction: column; justify-content: center;  align-items: center; margin-top: 40%;" >
          <img src="../../../assets/img/bolsa.png" style=" width:100px; height: 100px; margin: auto;">
             <div  style="text-align:center;margin-top: 10px;padding-bottom: 10px; display: flex; flex-direction: column;">
                 Tu carrito de compra está vacío
                 <br><br>
-                <input type="submit"  style="float: right; padding: 13px 40px; background: black; color: white; border: none;" value="IR DE COMPRAS"> 
+                <input type="submit" (click)="goNuevoProducto()" style="width: 100%;" class="btn_negro" value="IR DE COMPRAS"> 
             </div>
         </div>
     </div>
 
+
+    <div  *ngIf="totalPagar" class="container-lg" style="padding: 0; height: calc(100% - 130px); background: white; z-index: 1000000;">
+        <p style="font-size: 24px; text-align: center;margin-top: 10px;margin-bottom: 10;font-family: serif;">Estos son sus productos seleccionados</p>
+            <div class="container-lg" style="padding: 7px ;height: calc(68% - 117px); overflow-y: auto; " >
+                <div  style="background: #F2F6F7; flex-direction: column; overflow: auto; width: 100%; text-align: center; display: flex; align-items: center; height: calc(100% - 20px);  ">
+                    <div style=" background: white; flex-direction: column; overflow: auto; width: 100%;  margin-top: 0px; text-align: center; display: flex; align-items: center; height: calc(120% - 45px); padding: 5px;">
+                        <div style="background: white; width: 100%;  margin-top: 10px; z-index: 1000; height: auto; padding: 10px; box-shadow: 2px 2px 4px 0px; border-radius: 5px; " *ngFor="let x of productos">
+                            <div style="display: flex; justify-content: space-around;" *ngIf="x.producto">
+                                <div style="Border-right: 1px solid black;width: 35%;">{{x.producto}}</div>
+                                <div style="Border-right: 1px solid black; width: 35%;">x{{x.cantidad}}</div>
+                                <div style="width: 35%;">${{x.total}}</div>
+                                <svg (click)="eliminarProducto(x)" style="width: 30px;height: 30px;" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                    <path 
+                                        fill-rule="evenodd"
+                                        d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"
+                                    />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p style="margin-left: 15px;font-size: 25px;font-family: monospace;">Total: $<span>{{totalPagar}}</span></p>
+            <div class="btn_contenedor">
+                <button class="btn_negro">Confirmar pedido</button>
+                <p class="vaciar" (click)="vaciarCarrito()">VACIAR CARRITO</p>
+                <button class="btn_seguir">Seguir comprando</button>
+            </div>
+        </div>
+
 </div>
-    <style>
-        .seccion{
-            display: flex;
-            justify-content: space-around;
-            position: absolute;
-            background: #dbdcde;
-            width: 100%;
-            bottom: 0;
-            left: 0;
-            height: 49px;
-            padding: 4px;
-        }
+
+
+
+<style>
+
+    .btn_seguir{
+        background: white; 
+        width: 60%;  
+        margin-top: 10px; 
+        z-index: 1000; 
+        height: auto; 
+        padding: 10px; 
+        margin: 0;
+        border-radius: 5px;
+
+    }
+
+    .vaciar{
+        margin-top: 30px;
+        color: red;
+        margin-bottom: 30px;
+    }
+
+    .btn_negro{
+        float: right; padding: 13px 40px; background: black; color: white; border: none;
+        width: 80%;
+    }
+
+    .btn_contenedor{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    
+
+
+    .seccion{
+        display: flex;
+        justify-content: space-around;
+        position: absolute;
+        background: #dbdcde;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        height: 49px;
+        padding: 4px;
+    }
+    .nav{
+        text-align: center;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        border: 1px solid black;
+    }
+    
+    .nave{
+        border-right: 1px solid black;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .nave:active{
+        background: rgb(241, 236, 236);
+    }
+    
+    .linea{
+        margin: 0;
+        padding: 0;
+        height: 30px;
+        border-right: 1px solid black;
+    }
+    
+    .nav2{
+        background: white;
+        height: 45px;
+        margin: auto;
+        border-radius: 5pt;
+        box-shadow: 0px 5px 6px -4px rgba(0, 0, 0, 0.5);
+        background: #fefefe;
+    }
     </style>
+    

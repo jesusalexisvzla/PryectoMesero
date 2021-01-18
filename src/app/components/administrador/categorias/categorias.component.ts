@@ -1,5 +1,4 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { cateogria } from "../../interfaces/prueba";
 import { RouterOutlet, Router } from '@angular/router';
 import { HttpClient, HttpParams } from '@angular/common/http' 
 import {ServiceService} from '../../../servicios/servicio.service'
@@ -48,7 +47,6 @@ export class CategoriasComponent implements OnInit  {
       .subscribe(
         (datos: any[])=> this.numeroCategorias = datos.length),
         err => console.log(err);
-        console.log(this.numeroCategorias);
     }
 
     // AQUI SE LE ENVIAN LOS DATOS DE ESTA PANTALLAS, LOS REGISTROS AL SERVICIO PORQUE DE ESTA MANERA LOS CONTENDRA PARA CONSULTARLOS EN OTRO COMPONENTE 
@@ -70,6 +68,29 @@ export class CategoriasComponent implements OnInit  {
         estatus: 0
       })
       .subscribe(err => console.log(err)) 
+      alert("Producto eliminado")
+    }
+
+    public verificar = []
+
+    verificarProductos(s:any){
+      let filter = {
+        where: {
+          categoriaId: s,
+          estatus: 1
+        }
+      }
+      this._http.get('http://localhost:3000/api/Productos?filter='+ JSON.stringify(filter)).subscribe((data: any[]) => {
+          this.verificar = data;
+
+          if (this.verificar.length) {
+              alert("No puede eliminar esta categoria porque contiene productos, primero elimine los productos de esta categoria...puto");
+          } else {
+              this.eliminar(s)
+          }
+      }, (err) => {
+          console.log(err);
+      });
     }
     
     goNuevaCategoria(){

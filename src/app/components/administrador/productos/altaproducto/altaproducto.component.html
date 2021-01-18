@@ -18,6 +18,7 @@
     <form [formGroup]="formProducto" (ngSubmit)="enviarProducto(formProducto.value)">
         <div class="container-lg" style="text-align: left;">
             <div>
+                <input formControlName="id" type="text" name="id"/>
                 <p style="margin: 8px 0px;">Nombre del producto:</p>
                 <input formControlName="nombre" class="custom-select" type="text" name="nombre" style="background: none; border: 1px solid black; display: block; padding: 10px 0px; font-size: 12pt; width: 100%; text-indent: 5px;" />
                 <!-- <div *ngIf="formulario.get('nombre').hasError('required') && formulario.get('nombre').touched" style="color: red;">Es necesario el nombre</div> -->
@@ -26,14 +27,14 @@
                 <!-- <div *ngIf="formulario.get('precio').hasError('required') && formulario.get('precio').touched" style="color: red;">Es necesario el precio</div> -->
                 <p style="margin: 8px 0px;">Categoria:</p>
                 <div class="input-group mb-3">
-                    <select formControlName="categoriaId"  [(ngModel)]="opcionSeleccionado" (change)="tomarIdCategoria(opcionSeleccionado)" class="custom-select"  id="inputGroupSelect01"  style="border: 1px solid black;">
+                    <select formControlName="categoriaId" [(ngModel)]="opcionSeleccionado" (change)="tomarIdCategoria(opcionSeleccionado)" class="custom-select"  id="inputGroupSelect01"  style="border: 1px solid black;">
                         <option value="{{x.id}}" *ngFor="let x of categorias">{{x.nombre}}</option>
                     </select>
                 </div>
                 <!-- <div *ngIf="formulario.get('tipo').hasError('required') && formulario.get('tipo').touched" style="color: red;">Es necesario el tipo</div> -->
                 <p style="margin: 8px 0px;">Descripción:</p>
                 <textarea
-                    formControlName="descripcion" class="custom-select" style="background: none; border: 1px solid black; display: block; padding: 10px 0px; font-size: 12pt; width: 100%; text-indent: 5px; height: 80px; margin-bottom: 15px;"
+                    formControlName="descripcion" name="descricpion" class="custom-select" style="background: none; border: 1px solid black; display: block; padding: 10px 0px; font-size: 12pt; width: 100%; text-indent: 5px; height: 80px; margin-bottom: 15px;"
                 ></textarea>
                 <input type="submit" style="float: right; padding: 13px 40px; background: black; color: white; border: none;" value="GUARDAR" />
             </div>

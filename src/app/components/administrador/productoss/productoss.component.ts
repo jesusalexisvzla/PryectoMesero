@@ -10,17 +10,20 @@ import { ServiceService } from 'src/app/servicios/servicio.service';
 })
 export class ProductossComponent implements OnInit {
 
-  constructor( private _http: HttpClient, private _datosAServicio: ServiceService) { }
+  constructor(private route:Router, private _http: HttpClient, private _datosAServicio: ServiceService) { }
 
 
   public numeroProductos;
+  public infoCategoria: Array<any>;
   productos = [];
 
   ngOnInit() {
+
+    this.infoCategoria = this._datosAServicio.getArray();
+
     let filter = {
       where: {
-        // precio: "50"
-        categoriaId: "5fdd7b3dd959d2496c6dea71",
+        categoriaId: this.infoCategoria,
         estatus: 1
       },
       include: ['categoria']
@@ -30,22 +33,22 @@ export class ProductossComponent implements OnInit {
       (datos: any[])=> this.productos = datos),
       err => console.log(err);
       
-
-      this.size()
+        this.size(this.infoCategoria)
   }
 
-  size(){
+  size(s:any){
     let filter = {
       where: {
-        categoriaId: "5fdd7b3dd959d2496c6dea71",
+        categoriaId: s,
         estatus: 1
-
       }
     }
     this._http.get('http://localhost:3000/api/Productos?filter='+ JSON.stringify(filter))
     .subscribe(
       (datos: any[])=> this.numeroProductos = datos.length),
       err => console.log(err);
+      console.log(this.numeroProductos);
+      
   }
 
   eliminar(s:string) {
@@ -55,5 +58,28 @@ export class ProductossComponent implements OnInit {
     })
     .subscribe(err => console.log(err)) 
   }
+  
+   goNuevoProducto(){
+    this.route.navigate(['/administrador/altaproducto']);
+  }
+
+  goBack(){
+    this.route.navigate(['/administrador/productos']);
+  }
+
+  sendArray(datos) {
+    this._datosAServicio.setArray(datos);
+  }
+
+  actualizar(s:any){
+    this.goNuevoProducto()
+    this.sendArray(s);
+    console.log(s);
+    
+  }
+
+  // goProductos(){
+  //   this.route.navigate(['/administrador/productos']);
+  // }
 
 }

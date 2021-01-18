@@ -13,7 +13,7 @@ export class AltacategoriaComponent implements OnInit{
   constructor(private route:Router, private _builder:FormBuilder, private _http: HttpClient, private _service: ServiceService)
   {
       this.formCategoria = this._builder.group({
-      id: ['', Validators.required],
+      id: [''],
       nombre: ['', Validators.required]
     })
     var form = new FormData();
@@ -30,14 +30,15 @@ export class AltacategoriaComponent implements OnInit{
     // HACE LLAMAR GETARRAY DECLARADO EN EL SERVICIO QUE CONTIENE LA INFORMACION  
     this.contenidoCategoria = this._service.getArray();
     // this.rellenarFormulario(this.contenidoCategoria)
-    this.formCategoria.patchValue(this.contenidoCategoria)
+    // this.formCategoria.patchValue(this.contenidoCategoria)
+    this.rellenarFormulario(this.contenidoCategoria)
 
   }
 
-//   rellenarFormulario(infoCategoria: any) {
-//     this.formCategoria.get('id').patchValue(infoCategoria.id);
-//     this.formCategoria.get('nombre').patchValue(infoCategoria.nombre);
-//  }
+  rellenarFormulario(infoCategoria: any) {
+    this.formCategoria.get('id').patchValue(infoCategoria.id);
+    this.formCategoria.get('nombre').patchValue(infoCategoria.nombre);
+ }
 
   // actualizar (s:any, nom:any) {
   //   this._http.patch('http://localhost:3000/api/Categorias/' + s, 

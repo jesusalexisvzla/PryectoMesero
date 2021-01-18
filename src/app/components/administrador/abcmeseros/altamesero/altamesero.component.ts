@@ -30,17 +30,18 @@ export class AltameseroComponent implements OnInit{
   ngOnInit(){
     this.contenidoMesero = this._service.getArray();
     console.log(this.contenidoMesero);
-    this.formMesero.patchValue(this.contenidoMesero);
+    // this.formMesero.patchValue(this.contenidoMesero);
+    this.rellenarFormulario(this.contenidoMesero)
     
   }
     
-  // rellenarFormulario(infoMesero: any) {
-    // this.formMesero.get('id').patchValue(infoMesero.id);
-    // this.formMesero.get('claveMesero').patchValue(infoMesero.claveMesero);
-    // this.formMesero.get('nombreMesero').patchValue(infoMesero.nombreMesero);
-    // this.formMesero.get('apellidoMesero').patchValue(infoMesero.apellidoMesero);
-    // this.formMesero.get('contraMesero').patchValue(infoMesero.contraMesero);
-//  }
+  rellenarFormulario(infoMesero: any) {
+    this.formMesero.get('id').patchValue(infoMesero.id);
+    this.formMesero.get('claveMesero').patchValue(infoMesero.claveMesero);
+    this.formMesero.get('nombreMesero').patchValue(infoMesero.nombreMesero);
+    this.formMesero.get('apellidoMesero').patchValue(infoMesero.apellidoMesero);
+    this.formMesero.get('contraMesero').patchValue(infoMesero.contraMesero);
+ }
  
 
   enviarMesero(values){

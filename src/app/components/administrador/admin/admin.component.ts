@@ -15,7 +15,6 @@ export class AdminComponent {
 
   goProductos(){
     this.route.navigate(['/administrador/productos']);
-  
   }
   goCategorias(){
     this.route.navigate(['/administrador/categorias']);

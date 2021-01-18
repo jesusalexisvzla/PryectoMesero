@@ -19,7 +19,7 @@
         <div class="container-lg">
             <div style="text-align: left;">
                 <p style="margin: 8px 0px;">Nombre de categoria:</p>
-                <input formControlName="id"  type="hidden" name="id"/>
+                <input formControlName="id" type="text" name="id"/>
                 <input formControlName="nombre" class="custom-select" type="text" name="nombre" style="background: none; border: 1px solid black; display: block; padding: 10px 0px; font-size: 12pt; width: 100%; text-indent: 5px; text-transform: capitalize;"/>
                 <div *ngIf="formCategoria.get('nombre').hasError('required') && formCategoria.get('nombre').touched" style="color: red;">Es necesario el nombre.</div>
                 <br />

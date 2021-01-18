@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { comida } from "../../interfaces/prueba";
 
 @Component({
@@ -8,39 +10,29 @@ import { comida } from "../../interfaces/prueba";
 })
 export class MenuParte4Component {
 
-  constructor() { }
+  constructor(private route:Router, private _http: HttpClient) { }
 
-  producto: comida[] = [
-    {
-      nombre: "pizza",
-      precio: 30,
-      descripcion: "Rica pizza deliciosa que te encantara muchisimo"
-    },
-    {
-      nombre: "dogo",
-      precio: 45,
-      descripcion: "Salchicha grande"
-    },
-    {
-      nombre: "dogo",
-      precio: 45,
-      descripcion: "Salchicha grande"
-    },
-    {
-      nombre: "dogo",
-      precio: 45,
-      descripcion: "Salchicha grande"
-    },
-    {
-      nombre: "dogo",
-      precio: 45,
-      descripcion: "Salchicha grande"
-    },
-    {
-      nombre: "dogo",
-      precio: 45,
-      descripcion: "Salchicha grande"
+
+  productosAlcohol = [];
+
+  ngOnInit() {
+    
+    let filter = {
+      where: {
+        categoriaId: "5fdda80ad959d2496c6dea76",
+        estatus: 1
+      }
     }
-  ]
+
+    this._http.get('http://localhost:3000/api/Productos?filter='+ JSON.stringify(filter)).subscribe((data: any[]) => {
+        this.productosAlcohol = data;
+        console.log(this.productosAlcohol);
+    }, (err) => {
+        console.log(err);
+    });
+
+    
+  }
+  
 
 }

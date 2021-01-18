@@ -51,6 +51,7 @@ export class ProductosComponent implements OnInit{
 
   goNuevoProducto(){
     this.route.navigate(['/administrador/altaproducto']);
+    this.sendArray(0)
   }
 
   goProducto(){
@@ -60,7 +61,17 @@ export class ProductosComponent implements OnInit{
   goBack(){
     this.route.navigate(['/administrador/']);
   }
+
+  sendArray(datos) {
+    this._datosAServicio.setArray(datos);
+  }
  
+  prueba(s:any){
+    console.log(s);
+    this.goProducto();
+    this.sendArray(s.id)
+
+  }
 
 
 }

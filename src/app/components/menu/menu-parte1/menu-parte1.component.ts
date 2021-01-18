@@ -1,58 +1,47 @@
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet, Router } from '@angular/router';
-import { comida } from "../../interfaces/prueba";
+import { ServiceService } from 'src/app/servicios/servicio.service';
 
 @Component({
   selector: 'app-menu-parte1',
   templateUrl: './menu-parte1.component.html',
   styleUrls: ['./menu-parte1.component.css']
 })
-export class MenuParte1Component {
+export class MenuParte1Component implements OnInit {
 
-  constructor(private route:Router){}
+  constructor(private route:Router, private _http: HttpClient, private _datosAServicio: ServiceService){}
 
-  goProducto(){
-    this.route.navigate(['/comprar']);
-  }
 
-  // ngOnInit(): void {
-  // }
+   productoComidas = [];
+    ngOnInit() {
 
-  producto: comida[] = [
-    {
-      nombre: "Pizza",
-      precio: 30,
-      descripcion: "Rica pizza deliciosa que te encantara muchisimo"
-    },
-    {
-      nombre: "dogo",
-      precio: 45,
-      descripcion: "Salchicha grande"
-    },
-    {
-      nombre: "dogo",
-      precio: 45,
-      descripcion: "Salchicha grande"
-    },
-    {
-      nombre: "dogo",
-      precio: 45,
-      descripcion: "Salchicha grande"
-    },
-    {
-      nombre: "dogo",
-      precio: 45,
-      descripcion: "Salchicha grande"
-    },
-    {
-      nombre: "dogo",
-      precio: 45,
-      descripcion: "Salchicha grande"
+      let filter = {
+        where: {
+          categoriaId: "5fdd7b3dd959d2496c6dea71",
+          estatus: 1
+        }
+      }
+  
+      this._http.get('http://localhost:3000/api/Productos?filter='+ JSON.stringify(filter)).subscribe((data: any[]) => {
+          this.productoComidas = data;
+          console.log(this.productoComidas);
+      }, (err) => {
+          console.log(err);
+      });
+
+      
     }
-  ]
 
-    alerta() {
-    alert('hola')
+    sendArray(datos) {
+      // NOMBRE DE LA VARIABLE DECLARADA EN EL CCONSTRUCTOR 
+      this._datosAServicio.setArray(datos);
+    }
+
+  goProducto(s:any){
+    this.route.navigate(['/comprar']);
+    this.sendArray(s);
   }
-
 }
+
+

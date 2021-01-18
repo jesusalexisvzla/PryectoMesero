@@ -31,11 +31,11 @@
        
             <div style="background: #F4F8FB; overflow-y: auto; width: 100%;  margin-top: 10px; z-index: 1000; padding: 10px; height: 125px;display: flex; flex-direction: column; height: calc(100% - 100px); padding: 0;">
                 <div style=" background: #FFFFFF;height: auto; margin-bottom: 5px; padding: 15px;  border-left: 5px solid black;" *ngFor="let x of categorias" >
-                        <div style="width: 100%; text-align: left; display: flex;">
-                            <button style="display: flex; width: 50%; position: relative; font-size: 30px;" (click)= "goProducto()">
+                        <div style="width: 100%; text-align: left; display: flex;" (click)="prueba(x)">
+                            <div style="display: flex; width: 50%; position: relative; font-size: 30px;">
                                 <h2 style="margin: 0; font-size: 20px; margin-bottom: 2px;"></h2>
                                 <p style="margin: 0; margin-left: 10px;"> {{x.nombre}}</p>
-                            </button>
+                            </div>
   
                             <div style="display: flex; justify-content: flex-end; align-items: center; width: 50%; font-size: 30px;">
                                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">

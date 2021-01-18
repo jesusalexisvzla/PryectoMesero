@@ -50,3 +50,9 @@ export interface pedidococina{
     hora: string,
     fecha: string
 }
+
+export interface carrito{
+    producto: string,
+    cantidad: string,
+    total: string,
+}
