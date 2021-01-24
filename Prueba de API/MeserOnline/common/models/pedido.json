@@ -1,0 +1,54 @@
+{
+  "name": "Pedido",
+  "plural": "Pedidos",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "required": true
+    },
+    "area": {
+      "type": "string",
+      "required": true
+    },
+    "fila": {
+      "type": "string",
+      "required": true
+    },
+    "noAciento": {
+      "type": "string",
+      "required": true
+    },
+    "instruccion": {
+      "type": "string"
+    },
+    "totalPagar": {
+      "type": "string",
+      "required": true
+    },
+    "createdAt": {
+      "type": "date",
+      "required": true,
+      "default": "$now"
+    },
+    "estatus": {
+      "type": "string",
+      "required": true,
+      "default": "E"
+    },
+    "pedido": {
+      "type": [
+        "object"
+      ],
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

@@ -1,0 +1,40 @@
+{
+  "name": "Meseros",
+  "plural": "Meseros",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "required": true
+    },
+    "claveMesero": {
+      "type": "string",
+      "required": true
+    },
+    "nombreMesero": {
+      "type": "string",
+      "required": true
+    },
+    "apellidoMesero": {
+      "type": "string",
+      "required": true
+    },
+    "contraMesero": {
+      "type": "string",
+      "required": true
+    },
+    "estatus": {
+      "type": "number",
+      "required": true,
+      "default": 1
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

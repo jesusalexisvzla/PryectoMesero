@@ -1,0 +1,40 @@
+{
+  "name": "CodigoCliente",
+  "plural": "CodigoClientes",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "string",
+      "required": true
+    },
+    "codigoAcceso": {
+      "type": "string",
+      "required": true
+    },
+    "area": {
+      "type": "string",
+      "required": true
+    },
+    "fila": {
+      "type": "string",
+      "required": true
+    },
+    "noAciento": {
+      "type": "string",
+      "required": true
+    },
+    "estatus": {
+      "type": "number",
+      "required": true,
+      "default": 1
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
