@@ -1,5 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { pedidococina } from "../../interfaces/prueba";
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-proceso',
@@ -8,55 +9,47 @@ import { pedidococina } from "../../interfaces/prueba";
 })
 export class ProcesoComponent {
 
-  constructor() { }
+  constructor(private _http: HttpClient) {
+    this.traerProducto()
+   }
 
-  pedidos: pedidococina[] = [
-    {
-      pedido:1,
-      producto: "Nachos",
-      cantidad: 3,
-      descripcion: "Sin chiles porque me pega chorro y me cago asi que si le echan chiles los ire a pedoreear ",
-      fecha: '20/10/2020',
-      hora: '02:30pm'
-    },
-    {
-      pedido:2,
-      producto: "Nachos",
-      cantidad: 3,
-      descripcion: "con mucho queso no sean casikes ",
-      fecha: '20/10/2020',
-      hora: '3:30px' 
+   fechaFormato(s:any){
+    return s = moment(s).format('LT');
+  }
+  horaFormato(s:any){
+    return s = moment(s).add(10, 'days').calendar(); ;
+  }
+   productos = [];
+  traerProducto(){
+    let filter = {
+      where: {
+        estatus: "P"
+      }
+    }
+    this._http.get('http://localhost:3000/api/Pedidos?filter='+ JSON.stringify(filter))
+    .subscribe(
+      (datos: any[])=> this.productos = datos),
+      err => console.log(err);
+      console.log(this.productos);
+  }
 
-    },
-    {
-      pedido:3,
-      producto: "Nachos",
-      cantidad: 3,
-      descripcion: ":p",
-      fecha: '20/10/2020',
-      hora: '02:30pm'
-
-    },
-    {
-      pedido:4,
-      producto: "Nachos",
-      cantidad: 3,
-      descripcion: "Sin chiles",
-      fecha: '20/10/2020',
-      hora: '02:30pm'
-
-    },
-    {
-      pedido:5,
-      producto: "Nachos",
-      cantidad: 3,
-      descripcion: "Sin chiles",
-      fecha: '20/10/2020',
-      hora: '02:30pm'
-
-    },
   
-  ]
+  cancelar(s:any){
+    this._http.patch('http://localhost:3000/api/Pedidos/' + s, 
+    {
+      estatus: "E"
+    })
+    .subscribe(err => console.log(err)) 
+    console.log(s);
+  }
+  finalizar(s:any){
+    this._http.patch('http://localhost:3000/api/Pedidos/' + s, 
+    {
+      estatus: "F"
+    })
+    .subscribe(err => console.log(err)) 
+    console.log(s);
+  }
 
 
 }

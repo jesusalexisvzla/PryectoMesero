@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import * as moment from 'moment';
 import { ventadia } from "../../interfaces/prueba";
 
 
@@ -7,62 +9,44 @@ import { ventadia } from "../../interfaces/prueba";
   templateUrl: './ventadia.component.html',
   styleUrls: ['./ventadia.component.css']
 })
-export class VentadiaComponent {
+export class VentadiaComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _http : HttpClient) { }
+
+  ngOnInit(){
+    this.traerProducto()
+  }
   
-  ventasdia: ventadia[] = [
-    {
-      venta:1,
-      descripcion: "Tostitos preparados con mucho chamoy",
-      fecha: "23/10/2020",
-      precio: 230,
-    },
-    {
-      venta:2,
-      descripcion: "Tostitos preparados con mucho chamoy",
-      fecha: "23/10/2020",
-      precio: 230,
-    },
-    {
-      venta:3,
-      descripcion: "Tostitos preparados con mucho chamoy",
-      fecha: "23/10/2020",
-      precio: 230,
-    },
-    {
-      venta:4,
-      descripcion: "Tostitos preparados con mucho chamoy",
-      fecha: "23/10/2020",
-      precio: 230,
-    },
-    {
-      venta:5,
-      descripcion: "Tostitos preparados con mucho chamoy",
-      fecha: "23/10/2020",
-      precio: 230,
-    },
-    
-  ]
+  fechaFormato(s:any){
+    return s = moment(s).format('LT');
+  }
+  horaFormato(s:any){
+    return s = moment(s).add(10, 'days').calendar();
+  }
+  
+  productos = [];
+  public montoTotal = 0;
+  public cantidad; 
 
+  traerProducto(){
+    let filter = {
+      where: {
+        estatus: "E"
+      }
+    }
+    this._http.get('http://localhost:3000/api/Pedidos?filter='+ JSON.stringify(filter))
+    .subscribe(
+      (datos: any[])=> {
+        this.productos = datos
 
-
-  // prueba( clavee){
-  //   // la funcion recibe un valor  y se le asigna a la variabble dentro de la funcion, scoupe de JavaScript invstigalo te va servir
-  //   var clave = clavee;
-
-  //   if (clave=='mesero') {
-  //     // retorna la funcon setTimeout con lo que tiene dentro, esta funcion se ejecuta despues de 100 milisegundos
-  //     return setTimeout(function(){
-  //       alert('Bienvenido Mesero')
-  //   }, 100)
-  // }else if (clave == 'administrador'){
-  //       return setTimeout(function(){
-  //         alert('Bienvenido Administrador')
-  //     }, 100)
-
-  //   }
-  // }
-
+        for (let x = 0; x < this.productos.length; x++) {
+          const element = this.productos[x];
+          this.montoTotal = this.montoTotal + parseInt(element.totalPagar)
+        }
+        this.cantidad = datos.length
+      }),
+      err => console.log(err);   
+  }
+ 
 
 }

@@ -42,6 +42,9 @@ export class MenuParte1Component implements OnInit {
     this.route.navigate(['/comprar']);
     this.sendArray(s);
   }
+
+ 
+
 }
 
 

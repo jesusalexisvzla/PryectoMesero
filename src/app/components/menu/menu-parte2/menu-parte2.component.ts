@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ServiceService } from 'src/app/servicios/servicio.service';
 import { comida } from "../../interfaces/prueba";
 
 @Component({
@@ -10,7 +11,7 @@ import { comida } from "../../interfaces/prueba";
 })
 export class MenuParte2Component implements OnInit {
 
-  constructor(private route:Router, private _http: HttpClient) { }
+  constructor(private route:Router, private _http: HttpClient, private _datosAServicio: ServiceService) { }
 
 
   productoBebidas = [];
@@ -32,6 +33,15 @@ export class MenuParte2Component implements OnInit {
     });
 
     
+  }
+  sendArray(datos) {
+    // NOMBRE DE LA VARIABLE DECLARADA EN EL CCONSTRUCTOR 
+    this._datosAServicio.setArray(datos);
+  }
+  
+  goProducto(s:any){
+    this.route.navigate(['/comprar']);
+    this.sendArray(s);
   }
 
  

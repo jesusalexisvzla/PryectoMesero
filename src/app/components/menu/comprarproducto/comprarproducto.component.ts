@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { exit } from 'process';
 import { ServiceService } from 'src/app/servicios/servicio.service';
@@ -15,7 +15,14 @@ import { carrito } from '../../interfaces/prueba';
 export class ComprarproductoComponent implements OnInit {
   private _datosAServicio: any;
 
-  constructor(private route:Router,private _builder:FormBuilder, private _service: ServiceService) { }
+  constructor(private route:Router,private _builder:FormBuilder, private _service: ServiceService) {
+    this.formCategoria = this._builder.group({
+      instruccion: ['']
+      // nombre: ['', Validators.required]
+    })
+    var form = new FormData();
+   }
+   formCategoria: FormGroup
 
 
   public infoProductoCompmrar: Array<any>;
@@ -56,13 +63,14 @@ export class ComprarproductoComponent implements OnInit {
     console.log(this.pedidos);
     
   }
+     array = [];
 
-    pruebaLocalStogare(producto:any, cantidad:any, total:any){
-      let nombreProducto;
+    pruebaLocalStogare(producto:any, cantidad:any, total:any, values: any){
       let contadorCantidad;
       let contadorTotal;
       let localProducts = JSON.parse(localStorage.getItem('idCliente'));
       let flag = true;
+      
       if (localProducts) {
           this.pedidos = localProducts;
       }
@@ -85,15 +93,21 @@ export class ComprarproductoComponent implements OnInit {
         this.pedidos.push({
           producto: producto,
           cantidad: cantidad,
+          instruccion: values,
           total: total,
         });
+        
+        
         localStorage.setItem('idCliente', JSON.stringify(this.pedidos))
       }
+      
   }
 
   goMenu(){
     this.route.navigate(['/menu']);
   }
+
+x
 
 } 
 

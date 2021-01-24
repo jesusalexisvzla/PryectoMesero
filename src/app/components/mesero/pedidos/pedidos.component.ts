@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit } from '@angular/core';
+import * as moment from 'moment';
 import { pedido } from "../../interfaces/prueba";
 
 @Component({
@@ -6,47 +8,39 @@ import { pedido } from "../../interfaces/prueba";
   templateUrl: './pedidos.component.html',
   styleUrls: ['./pedidos.component.css']
 })
-export class PedidosComponent {
+export class PedidosComponent implements OnInit{
 
-  constructor() { }
+  constructor(private _http: HttpClient) { }
+  ngOnInit() {
+    this.traerProducto()
+  }
 
-  pedidos: pedido[] = [
-    {
-      pedido:1,
-      area: "1",
-      silla: "23",
-      descripcion: "Tostitos preparados con mucho chamoy"
-    },
-    {
-      pedido:2,
-      area: "4",
-      silla: "1",
-      descripcion: "Nachos con carne"
-    },
-    {
-      pedido:3,
-      area: "6",
-      silla: "25",
-      descripcion: "Coca cola con galletas emperados"
-    },
-    {
-      pedido:4,
-      area: "34",
-      silla: "34",
-      descripcion: "Hot-dog"
-    },
-    {
-      pedido:5,
-      area: "12",
-      silla: "29",
-      descripcion: "5 ultras"
-    },
-    {
-      pedido:6,
-      area: "31",
-      silla: "11",
-      descripcion: "Donas de chocolate"
+  fechaFormato(s:any){
+    return s = moment(s).format('LT');
+  }
+  horaFormato(s:any){
+    return s = moment(s).add(10, 'days').calendar(); ;
+  }
+  productos = [];
+  traerProducto(){
+    let filter = {
+      where: {
+        estatus: "F"
+      }
     }
-  ]
+    this._http.get('http://localhost:3000/api/Pedidos?filter='+ JSON.stringify(filter))
+    .subscribe(
+      (datos: any[])=> this.productos = datos),
+      err => console.log(err);
+      console.log(this.productos);
+  }
 
+
+ entregado(s:any){
+  this._http.patch('http://localhost:3000/api/Pedidos/' + s, 
+  {
+    estatus: "E"
+  })
+  .subscribe(err => console.log(err)) 
+}
 }

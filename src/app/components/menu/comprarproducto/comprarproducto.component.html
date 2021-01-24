@@ -58,8 +58,8 @@
                             <span style="font-weight: bold;margin-bottom: 10px;">Precio: <span style="font-weight: unset; ">$</span> </span> {{infoProductoCompmrar.precio}}
                         </p>
                     </div>
-                    <div style="text-align: left; height: 55px; display: block;">
-                        <textarea style="border: 1px solid #ced4da; width: 100%; height: 59px; overflow-y: auto;" name="instrucción" id="" cols="30" rows="10" placeholder="Ingresa alguna instrucción"></textarea>
+                    <div [formGroup]="formCategoria" style="text-align: left; height: 55px; display: block;">
+                        <textarea formControlName="instruccion" style="border: 1px solid #ced4da; width: 100%; height: 59px; overflow-y: auto;" name="instruccion" id="instruccion" cols="30" rows="10" placeholder="Ingresa alguna instrucción"></textarea>
                     </div>
                 </div>
 
@@ -68,14 +68,14 @@
                       
                     </div>
                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <button  *ngIf="cantidad" (click)="resta(infoProductoCompmrar.precio)"  type="button" class="btn btn-secondary btn_resta">
+                        <button  *ngIf="cantidad" (click)="resta(infoProductoCompmrar.precio)" style="box-shadow: 1px 1px 1px 0px red, -1px -1px white;"  type="button" class="btn btn-secondary btn_resta">
                             <svg style="font-size: 30px;" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-dash-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                                 <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z" />
                             </svg>
                         </button>
                         <button  type="button" disabled=true class="btn btn-secondary btn_cant">{{cantidad}}</button>
-                        <button (click)="sumar(infoProductoCompmrar.precio)" type="button"class="btn btn-secondary btn_suma">
+                        <button (click)="sumar(infoProductoCompmrar.precio)" style="box-shadow: 1px 1px 1px 0px red, -1px -1px white;" type="button"class="btn btn-secondary btn_suma">
                             <svg style="font-size: 30px;" width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
                                 <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
@@ -83,19 +83,15 @@
                         </button>
                     </div>
                     <div>
-                        <button  class="btn_black" (click)="pruebaLocalStogare(infoProductoCompmrar.nombre, cantidad, precioSumar)">Agregar al carrito <span>$ {{precioSumar}}</span></button>
+                        <button  class="btn_compras" style="padding: 3px 9px;display: flex;flex-direction: column; align-items: center;" (click)="pruebaLocalStogare(infoProductoCompmrar.nombre, cantidad, precioSumar, formCategoria.value.instruccion)">Agregar al carrito <span *ngIf="precioSumar">$ {{precioSumar}}</span></button>
                     </div>
                 </div>
-
-                    <!-- <div *ngFor="let x of productoss">
-                        <p>{{x.nombre}}</p>
-                    </div> -->
-
-
-                <button class="btn_compras" (click)="goMenu()">SEGUIR COMPRANDO</button>
+                    <button class="btn_compras" style="background: white;color: black; margin-top: 7%;" (click)="goMenu()">SEGUIR COMPRANDO</button> 
+                <!-- <button(click)="goMenu()">SEGUIR COMPRANDO</button> -->
             </div>
         </div>
     </div>
+
     <style>
 
         .btn_resta{
@@ -114,14 +110,15 @@
 
 
         .btn_compras {
-            color: black;
-            background: white;
-            border-radius: 1px solid black;
-            margin-top: 24px;
-            box-shadow: 1px 1px 1px 1px;
-            border-radius: 5%;
-            width: auto;
-            height: 40px;
+
+            font-family: 'Noto Sans', sans-serif; 
+            background: black; 
+            padding: 8px 6px;
+            border-radius: 7px; 
+            /* margin-top: 20px;  */
+            color: white; 
+            box-shadow: 1px 1px 1px 0px red, -1px -1px white;
+          
         }
 
         .bonones {

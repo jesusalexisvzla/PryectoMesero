@@ -1,7 +1,7 @@
 <div class="container-fluid" style="background: white; height: 100vh; position: relative; padding: 0;">
     <h1 style="font-family: monospace;font-size: 35px;transform: translateY(97px);">Área de alcohol</h1>
     <div  style="max-width: 500px; background: F2F6F7; flex-direction: column; overflow: auto; width: 90%; height: 390px; margin: auto; margin-top: 120px; text-align: center; display: flex; align-items: center; height: calc(72% - 25px);">
-        <div style="background: white; width: 98%;  margin-top: 20px; z-index: 1000; height: auto; padding: 10px; box-shadow: 2px 2px 4px 0px;"  *ngFor="let x of productosAlcohol">
+        <div style="background: white; width: 98%;  margin-top: 20px; z-index: 1000; height: auto; padding: 10px; box-shadow: 2px 2px 4px 0px;"  *ngFor="let x of productosAlcohol" (click)="goProducto(x)">
             <div style=" width: 100%; margin: auto;text-align: center;">
                 <!-- <img src="../../../assets/img/pizzapepperoni0.jpg" width="100%" alt=""> -->
             </div>
