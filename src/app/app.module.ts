@@ -39,6 +39,9 @@ import { CarritoComponent } from './components/carrito/carrito.component';
 import { pathToFileURL } from 'url';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductossComponent } from './components/administrador/productoss/productoss.component';
+import { ImagenesComponent } from './components/administrador/imagenes/imagenes.component';
+import { ToastrModule } from 'ngx-toastr';
+
 
 
 const rutas: Routes = [
@@ -220,12 +223,14 @@ const rutas: Routes = [
     FinalizadosComponent,
     CocinaComponent,
     ProductossComponent,
+    ImagenesComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     RouterModule.forRoot(rutas, {
       enableTracing: true,
       paramsInheritanceStrategy: 'always',

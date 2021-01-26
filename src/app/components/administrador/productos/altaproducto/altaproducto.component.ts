@@ -23,16 +23,11 @@ export class AltaproductoComponent {
 
   formProducto:  FormGroup
 
-
     public numeroCategorias;
     categorias = [];
     public opcionSeleccionado;
     contenidoProducto =[];
 
-  // agregar(s:any){
-  //   console.log(s.categoria.nombre);
-  //   this.categorias=s.categoria.nombre
-  // }
 
   ngOnInit(){
     this.contenidoProducto = this._datosAServicio.getArray();
@@ -56,7 +51,7 @@ export class AltaproductoComponent {
     this.formProducto.get('id').patchValue(infoProducto.id);
     this.formProducto.get('nombre').patchValue(infoProducto.nombre);
     this.formProducto.get('precio').patchValue(infoProducto.precio);
-    // this.formProducto.get('categoriaId').patchValue(infoProducto.categoriaId);
+    this.formProducto.get('categoriaId').patchValue(infoProducto.categoriaId);
     this.formProducto.get('descripcion').patchValue(infoProducto.descripcion);
  }
 
@@ -65,29 +60,30 @@ export class AltaproductoComponent {
   }
 
   enviarProducto(values: any){
-    // console.log(infoPoducto);
-    this._http.put('http://localhost:3000/api/Productos', values)
-    .subscribe() 
-  }
+    let aler = ""
+    if (values.id != undefined) {
+      aler = "Producto actualizado"
+    }else{
+      aler = "Nuevo producto actualizado"
+    }
 
-  // SABER LONGITUD DEL REGISTROS TRAIDOS DE A BASE DE DATOS
-  // size(){
-  //   let filter = {
-  //     where: {
-  //       estatus: 1
-  //     }
-  //   }
-  //   this._http.get('http://localhost:3000/api/Categorias?filter='+ JSON.stringify(filter))
-  //   .subscribe(
-  //     (datos: any[])=> this.numeroCategorias = datos.length),
-  //     err => console.log(err);
-  //     console.log(this.numeroCategorias);
-  // }
+    if(values.nombre == undefined){
+      alert("Falta el nombre")
+    }else if (values.precio == undefined) {
+      alert("Falta el precio")
+    }else if (values.categoriaId == undefined) {
+      alert("Falta seleccionar la categoria")
+    }else{
+      this._http.put('http://localhost:3000/api/Productos', values)
+      .subscribe() 
+      alert(aler)
+      this.route.navigate(['/administrador/productos']); 
+    }
+  }
 
   goBack(){
     this.route.navigate(['/administrador/productos']);
   }
-
 
   enviar(values){
       console.log(values);

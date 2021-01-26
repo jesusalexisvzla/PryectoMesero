@@ -18,7 +18,7 @@
     <form [formGroup]="formProducto" (ngSubmit)="enviarProducto(formProducto.value)">
         <div class="container-lg" style="text-align: left;">
             <div>
-                <input formControlName="id" type="text" name="id"/>
+                <input formControlName="id" type="hidden" name="id"/>
                 <p style="margin: 8px 0px;">Nombre del producto:</p>
                 <input formControlName="nombre" class="custom-select" type="text" name="nombre" style="background: none; border: 1px solid black; display: block; padding: 10px 0px; font-size: 12pt; width: 100%; text-indent: 5px;" />
                 <!-- <div *ngIf="formulario.get('nombre').hasError('required') && formulario.get('nombre').touched" style="color: red;">Es necesario el nombre</div> -->

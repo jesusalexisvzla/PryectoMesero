@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import * as moment from 'moment';
 
 @Component({
@@ -9,7 +10,7 @@ import * as moment from 'moment';
 })
 export class ProcesoComponent {
 
-  constructor(private _http: HttpClient) {
+  constructor(private route:Router, private _http: HttpClient) {
     this.traerProducto()
    }
 
@@ -40,15 +41,18 @@ export class ProcesoComponent {
       estatus: "E"
     })
     .subscribe(err => console.log(err)) 
-    console.log(s);
+    this.route.navigate(['/cocina/recibidos']);
+
   }
+
   finalizar(s:any){
     this._http.patch('http://localhost:3000/api/Pedidos/' + s, 
     {
       estatus: "F"
     })
     .subscribe(err => console.log(err)) 
-    console.log(s);
+    this.route.navigate(['/cocina/finalizados']);
+
   }
 
 

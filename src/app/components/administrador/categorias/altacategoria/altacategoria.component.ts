@@ -55,7 +55,10 @@ export class AltacategoriaComponent implements OnInit{
   }
   enviarCategoria(values){
      this._http.put('http://localhost:3000/api/Categorias', values)
-     .subscribe()     
+     .subscribe()   
+     alert("Nombre categoria actualizado")
+     this.route.navigate(['/administrador/categorias']); 
+    
     }
  
 

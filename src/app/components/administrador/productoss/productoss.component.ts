@@ -20,6 +20,8 @@ export class ProductossComponent implements OnInit {
   ngOnInit() {
 
     this.infoCategoria = this._datosAServicio.getArray();
+    console.log(this.infoCategoria);
+    
 
     let filter = {
       where: {

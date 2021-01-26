@@ -27,8 +27,7 @@ export class RecibidosComponent implements OnInit{
   }
 
   productos = [];
-  hora=""
-  fecha=""
+
   traerProducto(){
     let filter = {
       where: {
@@ -49,8 +48,16 @@ export class RecibidosComponent implements OnInit{
       {
         estatus: "P"
       })
+      .subscribe(err => console.log(err))
+      this.route.navigate(['/cocina/proceso']);
+    }
+
+    rechazado(s:any){
+      this._http.patch('http://localhost:3000/api/Pedidos/' + s, 
+      {
+        estatus: "R"
+      })
       .subscribe(err => console.log(err)) 
-      console.log(s);
     }
 
     
