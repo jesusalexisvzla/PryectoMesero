@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RouterOutlet, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { ServiceService } from 'src/app/servicios/servicio.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { ServiceService } from 'src/app/servicios/servicio.service';
   styleUrls: ['./altaproducto.component.css']
 })
 export class AltaproductoComponent {
-  constructor(private route:Router, private _builder: FormBuilder, private _http: HttpClient, private _datosAServicio: ServiceService)
+  constructor(private route:Router, private _builder: FormBuilder, private _http: HttpClient, private _datosAServicio: ServiceService , private toastr: ToastrService)
   {
     this.formProducto = this._builder.group({
       id: ['', Validators.required],
@@ -62,23 +63,34 @@ export class AltaproductoComponent {
   enviarProducto(values: any){
     let aler = ""
     if (values.id != undefined) {
-      aler = "Producto actualizado"
+      aler = "Producto actualizado."
     }else{
-      aler = "Nuevo producto actualizado"
+      aler = "Nuevo producto agregado."
     }
 
     if(values.nombre == undefined){
-      alert("Falta el nombre")
+      this.toastr.error("Falta el nombre", "Notificación",{
+        timeOut: 2500
+      });
     }else if (values.precio == undefined) {
-      alert("Falta el precio")
+      this.toastr.error("Falta el precio", "Notificación",{
+        timeOut: 2500
+      });
     }else if (values.categoriaId == undefined) {
-      alert("Falta seleccionar la categoria")
+      this.toastr.error("Falta seleccionar la categoria", "Notificación",{
+        timeOut: 2500
+      });
     }else{
       this._http.put('http://localhost:3000/api/Productos', values)
       .subscribe() 
-      alert(aler)
-      this.route.navigate(['/administrador/productos']); 
+      this.route.navigate(['/administrador/productoss']);
+      this.toastr.success(aler, "Notificación")
+      this.sendArray(values.categoriaId)
     }
+  }
+
+  sendArray(datos) {
+    this._datosAServicio.setArray(datos);
   }
 
   goBack(){

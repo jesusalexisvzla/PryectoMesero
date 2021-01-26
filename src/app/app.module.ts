@@ -40,7 +40,9 @@ import { pathToFileURL } from 'url';
 import { HttpClientModule } from '@angular/common/http';
 import { ProductossComponent } from './components/administrador/productoss/productoss.component';
 import { ImagenesComponent } from './components/administrador/imagenes/imagenes.component';
+
 import { ToastrModule } from 'ngx-toastr';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -230,7 +232,12 @@ const rutas: Routes = [
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot(),
+    ToastrModule.forRoot({
+      timeOut: 1300,
+      progressBar: true,
+      progressAnimation: "increasing",
+      preventDuplicates: true
+    }),
     RouterModule.forRoot(rutas, {
       enableTracing: true,
       paramsInheritanceStrategy: 'always',

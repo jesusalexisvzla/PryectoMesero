@@ -3,6 +3,7 @@ import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
+import { ToastrService } from 'ngx-toastr';
 import { ServiceService } from 'src/app/servicios/servicio.service';
 // import { carrito } from '../interfaces/prueba';
 
@@ -13,7 +14,7 @@ import { ServiceService } from 'src/app/servicios/servicio.service';
 })
 export class CarritoComponent implements OnInit {
 
-  constructor(private route:Router, private _service: ServiceService, private _http: HttpClient) { }
+  constructor(private route:Router, private _service: ServiceService, private _http: HttpClient, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.token = this._service.recibeTokenCliente();
@@ -52,8 +53,9 @@ export class CarritoComponent implements OnInit {
   vaciarCarrito(){
     this.productos = null
     localStorage.setItem('idCliente', JSON.stringify(this.productos))
-    alert("Carrito vaciado con exito")
     this.totalPagar = 0
+    this.toastr.success("carrito vaciado.", "Notificación");
+
   }
 
   eliminarProducto(s:any){
@@ -68,12 +70,14 @@ export class CarritoComponent implements OnInit {
 
       if (element.producto == s.producto) {
 
-          this.productos.splice(x, 1); // 1 es la cantidad de elemento a eliminar
+          this.productos.splice(x, 1); 
             console.log(this.productos[x]);
             
           localStorage.setItem('idCliente', JSON.stringify(this.productos))
       }
     }
+    this.toastr.success("Producto eliminado.", "Notificación");
+
     this.obtenerLocalStorage()
   }
 
@@ -82,8 +86,6 @@ export class CarritoComponent implements OnInit {
   }
 
   
-  fecha = new Date();
-
   realizarCompra(s: any){
     let infoCliente = JSON.parse(localStorage.getItem('tokenCliente'));
 
@@ -104,54 +106,10 @@ export class CarritoComponent implements OnInit {
     this.totalPagar = 0
     localStorage.setItem('idCliente', JSON.stringify(this.productos))
     this.route.navigate(['/menu']);
-    alert("Pedido realizado con exito");
+    this.toastr.success("Pedido realizado.", "Notificación");
     
     
   }
 
-  // pedidos=[]
-
-  // preuba(){
-  //   // this.pedidos = []
-  //   // localStorage.setItem('idCliente', JSON.stringify(this.pedidos))
-
-
-
-  //   // let localProducts = JSON.parse(localStorage.getItem('token'));
-
-  //   // let data = {
-  //   //   claveCliente: "pene",
-  //   //   "pedido": [  
-  //   //     this.productos
-  //   //   ]
-  //   // }
-  // }
-
-
-  // traerProducto(){
-  //   let filter = {
-  //     where: {
-  //       id: "6009f0d46ee9b8304c15f446"
-  //     }
-  //   }
-  //   this._http.get('http://localhost:3000/api/Pedidos?filter='+ JSON.stringify(filter))
-  //   .subscribe(
-  //     (datos: any[])=> this.prueba = datos),
-  //     err => console.log(err);
-            
-  //     var fechaPedido = this.prueba[0].createdAt;
-  //     var hora = moment(fechaPedido).format('LT');
-  //     var fecha = moment(fechaPedido).format('LL'); 
-
-  //     console.log(hora);
-  //     console.log(fecha);
-      
-  // }
-
-
-  
- 
-
-  
 
 }

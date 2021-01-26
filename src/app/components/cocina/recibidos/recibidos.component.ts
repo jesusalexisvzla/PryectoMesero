@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
+import { ToastrService } from 'ngx-toastr';
 import { ServiceService } from 'src/app/servicios/servicio.service';
 // import { pedidococina } from "../../interfaces/prueba";
 
@@ -13,7 +14,7 @@ import { ServiceService } from 'src/app/servicios/servicio.service';
 })
 export class RecibidosComponent implements OnInit{
 
-  constructor(private route:Router, private _service: ServiceService, private _http: HttpClient) { }
+  constructor(private route:Router, private _service: ServiceService, private _http: HttpClient, private toastr: ToastrService) { }
 
   ngOnInit(){
     this.traerProducto()
@@ -50,6 +51,8 @@ export class RecibidosComponent implements OnInit{
       })
       .subscribe(err => console.log(err))
       this.route.navigate(['/cocina/proceso']);
+      this.toastr.success("Pedido aceptado.", "Notificación");
+
     }
 
     rechazado(s:any){
@@ -58,6 +61,8 @@ export class RecibidosComponent implements OnInit{
         estatus: "R"
       })
       .subscribe(err => console.log(err)) 
+      this.toastr.success("Pedido rechazado.", "Notificación");
+
     }
 
     

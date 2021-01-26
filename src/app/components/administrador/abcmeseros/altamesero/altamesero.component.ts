@@ -45,27 +45,34 @@ export class AltameseroComponent implements OnInit{
       if (values.id != undefined) {
         aler = "Mesero actualizado"
       }else{
-        aler = "Nuevo mesero agregado con exito"
+        aler = "Mesero agregado con exito"
       }
-
       if(values.claveMesero == undefined){
-        alert("Falta el clave de mesero")
+        this.toastr.error("Falta el clave de mesero", "Notificación",{
+          timeOut: 2500
+        });
       }else if (values.nombreMesero == undefined) {
-        alert("Falta el nombre del mesero")
+        this.toastr.error("Falta el nombre del mesero", "Notificación",{
+          timeOut: 2500
+        });;
       }else if (values.apellidoMesero == undefined) {
-        alert("Falta el apellido del mesero")
+        this.toastr.error("Falta el apellido del mesero", "Notificación",{
+          timeOut: 2500
+        });
       }else if (values.contraMesero == undefined) {
-        alert("Falta la contraseña del mesero")
-      }else if (values.contraMesero == undefined) {
-        alert("Falta la contraseña del mesero")
-      }else{
-        // this._http.put('http://localhost:3000/api/Productos', values)
-        // .subscribe() 
-        // alert(aler)
-        // this.route.navigate(['/administrador/productos']); 
-        this.toastr.success(aler, "Notificación");
+        this.toastr.error("Falta la contraseña del mesero", "Notificación",{
+          timeOut: 2500
+        });
+      }else {
+        this._http.put('http://localhost:3000/api/Meseros', values)
+        .subscribe() 
+        this.route.navigate(['/administrador/meseros']); 
+        this.toastr.success(aler, "Notificación")
       }
 
+  }
+  prueba(){
+    alert("kaakak")
   }
 
   goBack(){

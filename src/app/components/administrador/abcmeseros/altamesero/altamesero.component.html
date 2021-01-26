@@ -20,16 +20,16 @@
                 <input formControlName="id" class="custom-select texts" type="hidden" name="id" > 
                 <p style="margin: 8px 0px;">Clave del mesero:</p> 
                 <input formControlName="claveMesero" class="custom-select texts" type="number" name="claveMesero" > 
-                    <div *ngIf="formMesero.get('claveMesero').hasError('required') && formMesero.get('claveMesero').touched" style="color: red;">Es necesario la clave.</div>
+                    <!-- <div *ngIf="formMesero.get('claveMesero').hasError('required') && formMesero.get('claveMesero').touched" style="color: red;">Es necesario la clave.</div> -->
                 <p style="margin: 8px 0px;">Nombre del mesero:</p> 
                 <input formControlName="nombreMesero" class="custom-select texts" type="text" name="nombre" > 
-                    <div *ngIf="formMesero.get('nombreMesero').hasError('required') && formMesero.get('nombreMesero').touched" style="color: red;">Es necesario el nombre.</div>
+                    <!-- <div *ngIf="formMesero.get('nombreMesero').hasError('required') && formMesero.get('nombreMesero').touched" style="color: red;">Es necesario el nombre.</div> -->
                 <p style="margin: 8px 0px;">Apellido:</p> 
                 <input formControlName="apellidoMesero" class="custom-select texts" type="text" name="apellidoMesero" > 
-                    <div *ngIf="formMesero.get('apellidoMesero').hasError('required') && formMesero.get('apellidoMesero').touched" style="color: red;">Es necesario el nombre.</div>
+                    <!-- <div *ngIf="formMesero.get('apellidoMesero').hasError('required') && formMesero.get('apellidoMesero').touched" style="color: red;">Es necesario el nombre.</div> -->
                 <p style="margin: 8px 0px;">Contraseña:</p> 
                 <input type="text" formControlName="contraMesero" class="custom-select texts"  name="contraMesero"> 
-                    <div *ngIf="formMesero.get('contraMesero').hasError('required') && formMesero.get('contraMesero').touched" style="color: red;">Es necesario el tipo.</div>
+                    <!-- <div *ngIf="formMesero.get('contraMesero').hasError('required') && formMesero.get('contraMesero').touched" style="color: red;">Es necesario el tipo.</div> -->
                 <br>
                 <input type="submit"  style="float: right; padding: 13px 40px; background: black; color: white; border: none;" value="GUARDAR"> 
             </div>

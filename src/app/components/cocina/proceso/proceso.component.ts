@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-proceso',
@@ -10,7 +11,7 @@ import * as moment from 'moment';
 })
 export class ProcesoComponent {
 
-  constructor(private route:Router, private _http: HttpClient) {
+  constructor(private route:Router, private _http: HttpClient, private toastr: ToastrService) {
     this.traerProducto()
    }
 
@@ -42,6 +43,8 @@ export class ProcesoComponent {
     })
     .subscribe(err => console.log(err)) 
     this.route.navigate(['/cocina/recibidos']);
+    this.toastr.success("Pedido cancelado.", "Notificación");
+
 
   }
 
@@ -52,6 +55,8 @@ export class ProcesoComponent {
     })
     .subscribe(err => console.log(err)) 
     this.route.navigate(['/cocina/finalizados']);
+    this.toastr.success("Pedido finlizado.", "Notificación");
+
 
   }
 

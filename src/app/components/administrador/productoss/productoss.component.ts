@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { ServiceService } from 'src/app/servicios/servicio.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { ServiceService } from 'src/app/servicios/servicio.service';
 })
 export class ProductossComponent implements OnInit {
 
-  constructor(private route:Router, private _http: HttpClient, private _datosAServicio: ServiceService) { }
+  constructor(private route:Router, private _http: HttpClient, private _datosAServicio: ServiceService, private toastr: ToastrService) { }
 
 
   public numeroProductos;
@@ -59,6 +60,9 @@ export class ProductossComponent implements OnInit {
       estatus: 0
     })
     .subscribe(err => console.log(err)) 
+    this.route.navigate(['/administrador/productos']);
+    this.toastr.success("Producto eliminado.", "Notificación")
+
   }
   
    goNuevoProducto(){
@@ -76,8 +80,6 @@ export class ProductossComponent implements OnInit {
   actualizar(s:any){
     this.goNuevoProducto()
     this.sendArray(s);
-    console.log(s);
-    
   }
 
   // goProductos(){

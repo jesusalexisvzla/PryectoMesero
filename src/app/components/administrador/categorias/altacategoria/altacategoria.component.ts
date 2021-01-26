@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { RouterOutlet, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http' 
 import {ServiceService} from '../../../../servicios/servicio.service'
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-altacategoria',
@@ -10,7 +11,7 @@ import {ServiceService} from '../../../../servicios/servicio.service'
   styleUrls: ['./altacategoria.component.css']
 })
 export class AltacategoriaComponent implements OnInit{
-  constructor(private route:Router, private _builder:FormBuilder, private _http: HttpClient, private _service: ServiceService)
+  constructor(private route:Router, private _builder:FormBuilder, private _http: HttpClient, private _service: ServiceService, private toastr: ToastrService)
   {
       this.formCategoria = this._builder.group({
       id: [''],
@@ -40,26 +41,21 @@ export class AltacategoriaComponent implements OnInit{
     this.formCategoria.get('nombre').patchValue(infoCategoria.nombre);
  }
 
-  // actualizar (s:any, nom:any) {
-  //   this._http.patch('http://localhost:3000/api/Categorias/' + s, 
-  //   {
-  //     nombre: nom.nombre
-      
-  //   })
-  //   .subscribe(err => console.log(err)) 
-  // }
 
   goBack(){
     this.route.navigate(['/administrador/categorias']);
  
   }
   enviarCategoria(values){
-     this._http.put('http://localhost:3000/api/Categorias', values)
-     .subscribe()   
-     alert("Nombre categoria actualizado")
-     this.route.navigate(['/administrador/categorias']); 
-    
-    }
- 
-
+      if(values.nombre == undefined){
+        this.toastr.error("Falta el nombre de la categoria", "Notificación",{
+          timeOut: 2500
+        });
+      }else{
+        this._http.put('http://localhost:3000/api/Categorias', values)
+        .subscribe()   
+        this.route.navigate(['/administrador/categorias']); 
+        this.toastr.success("Categoria actualizada", "Notificación")
+      }
+  }
 }

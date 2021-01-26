@@ -1,11 +1,8 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { exit } from 'process';
+import { ToastrService } from 'ngx-toastr';
 import { ServiceService } from 'src/app/servicios/servicio.service';
-import { runInThisContext } from 'vm';
-import { carrito } from '../../interfaces/prueba';
 
 @Component({
   selector: 'app-comprarproducto',
@@ -13,9 +10,8 @@ import { carrito } from '../../interfaces/prueba';
   styleUrls: ['./comprarproducto.component.css']
 })
 export class ComprarproductoComponent implements OnInit {
-  private _datosAServicio: any;
 
-  constructor(private route:Router,private _builder:FormBuilder, private _service: ServiceService) {
+  constructor(private route:Router,private _builder:FormBuilder, private _service: ServiceService, private toastr: ToastrService) {
     this.formCategoria = this._builder.group({
       instruccion: ['']
       // nombre: ['', Validators.required]
@@ -28,6 +24,8 @@ export class ComprarproductoComponent implements OnInit {
   public infoProductoCompmrar: Array<any>;
   public precioSumar : number = 0;
   public cantidad: number = 0;
+  pedidos = [];
+  array = [];
 
   ngOnInit(){
     this.infoProductoCompmrar = this._service.getArray();
@@ -44,15 +42,7 @@ export class ComprarproductoComponent implements OnInit {
       this.precioSumar = this.precioSumar - parseInt(xx);    
     }
 
-    
-// export interface carrito{
-//   producto: string,
-//   cantidad: string,
-//   total: string,
-// }
-
-  pedidos = [];
-  public infoObjeto: Array<any>;
+  
 
   sendArray(datos) {
     this._service.setArray(datos);
@@ -63,8 +53,8 @@ export class ComprarproductoComponent implements OnInit {
     console.log(this.pedidos);
     
   }
-     array = [];
 
+    
     pruebaLocalStogare(producto:any, cantidad:any, total:any, values: any){
       let contadorCantidad;
       let contadorTotal;
@@ -85,7 +75,8 @@ export class ComprarproductoComponent implements OnInit {
                   element.cantidad = contadorCantidad;
                   element.total = contadorTotal;
 
-                  localStorage.setItem('idCliente', JSON.stringify(this.pedidos))
+                  localStorage.setItem('idCliente', JSON.stringify(this.pedidos));
+                  this.toastr.success("Agreado al carrito.", "Notificación");
                   flag = false;
               }
       }
@@ -99,6 +90,8 @@ export class ComprarproductoComponent implements OnInit {
         
         
         localStorage.setItem('idCliente', JSON.stringify(this.pedidos))
+        this.toastr.success("Agreado al carrito.", "Notificación");
+
       }
       
   }
@@ -107,7 +100,6 @@ export class ComprarproductoComponent implements OnInit {
     this.route.navigate(['/menu']);
   }
 
-x
 
 } 
 

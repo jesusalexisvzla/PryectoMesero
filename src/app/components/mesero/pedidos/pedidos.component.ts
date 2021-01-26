@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import * as moment from 'moment';
-import { pedido } from "../../interfaces/prueba";
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-pedidos',
@@ -10,7 +11,7 @@ import { pedido } from "../../interfaces/prueba";
 })
 export class PedidosComponent implements OnInit{
 
-  constructor(private _http: HttpClient) { }
+  constructor(private route: Router, private _http: HttpClient, private toastr: ToastrService) { }
   ngOnInit() {
     this.traerProducto()
   }
@@ -42,5 +43,7 @@ export class PedidosComponent implements OnInit{
     estatus: "E"
   })
   .subscribe(err => console.log(err)) 
+  this.route.navigate(['/mesero/ventas']);
+  this.toastr.success("Pedido entregado.", "Notificación");
 }
 }
