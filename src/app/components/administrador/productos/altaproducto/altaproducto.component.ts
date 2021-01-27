@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RouterOutlet, Router } from '@angular/router';
+import { AnyNaptrRecord } from 'dns';
 import { ToastrService } from 'ngx-toastr';
 import { ServiceService } from 'src/app/servicios/servicio.service';
 
@@ -17,7 +18,7 @@ export class AltaproductoComponent {
       id: ['', Validators.required],
       nombre: ['', Validators.required],
       precio: ['', Validators.required],
-      categoriaId: ['', Validators.required],
+      categoriaId: [''],
       descripcion: ['']
     })
   }
@@ -28,6 +29,8 @@ export class AltaproductoComponent {
     categorias = [];
     public opcionSeleccionado;
     contenidoProducto =[];
+    producto =[];
+    prueba = true;
 
 
   ngOnInit(){
@@ -45,8 +48,50 @@ export class AltaproductoComponent {
             (datos: any[])=> this.categorias = datos),
             err => console.log(err);
      
+              this.productos()
   }
 
+  productos(){
+    
+    let filter = {
+      where: {
+        estatus: 1
+      }
+    }
+    this._http.get('http://localhost:3000/api/Productos?filter='+ JSON.stringify(filter))
+    .subscribe(
+      (datos: any[])=> this.producto = datos),
+      err => console.log(err);
+  }
+
+  seleccion(values: any){
+
+    let data = {
+      id:this.opcionSeleccionado,
+      "subproducto": [ {
+        nombre: values.nombre,
+        precio: values.precio,
+        descricpion: values.descripcion,
+      }
+      ]
+    }
+    
+    if(values.nombre == undefined){
+      this.toastr.error("Falta el nombre", "Notificación",{
+        timeOut: 2500
+      });
+    }else if (values.precio == undefined) {
+      this.toastr.error("Falta el precio", "Notificación",{
+        timeOut: 2500
+      });
+    }else{
+      this._http.patch('http://localhost:3000/api/Productos', data)
+      .subscribe() 
+      this.route.navigate(['/administrador/productos']);
+      this.toastr.success("Subproducto agregado.", "Notificación")
+    }
+
+  }
       
   rellenarFormulario(infoProducto: any) {
     this.formProducto.get('id').patchValue(infoProducto.id);

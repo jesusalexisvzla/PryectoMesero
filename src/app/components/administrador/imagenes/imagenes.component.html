@@ -39,3 +39,21 @@
         border-radius: 5%;
     }
 </style> -->
+
+        <!-- <div> -->
+            <!-- <img  style=" width: 150px; height: 150px;" src="foto" alt=""> -->
+            <!-- <img  style=" width: 150px; height: 150px;" src="http://localhost:3000/api/localContainers/fotos/download/admin1.png" alt=""> -->
+        <!-- </div> -->
+
+
+
+
+<form [formGroup]="formCategoria" (ngSubmit)="subirImagen(formCategoria.value)">
+    <p>Seleccione la imagen</p>
+
+    <input type="file" formControlName="name" id="name">
+
+
+        <input type="submit" value="Subir foto">
+
+</form>

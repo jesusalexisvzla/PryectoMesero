@@ -3,6 +3,7 @@ import { infoesero } from "../../../components/interfaces/prueba";
 import { RouterOutlet, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { ServiceService } from 'src/app/servicios/servicio.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-abcmeseros',
@@ -10,7 +11,7 @@ import { ServiceService } from 'src/app/servicios/servicio.service';
   styleUrls: ['./abcmeseros.component.css']
 })
 export class AbcmeserosComponent implements OnInit {
-  constructor(private route:Router, private _http: HttpClient, private _datosAServicio: ServiceService){}
+  constructor(private route:Router, private _http: HttpClient, private _datosAServicio: ServiceService, private toastr: ToastrService){}
 
   public numeroMeseros;
   meseros = [];
@@ -66,5 +67,7 @@ export class AbcmeserosComponent implements OnInit {
       estatus: 0
     })
     .subscribe(err => console.log(err)) 
+    this.toastr.success("Mesero eliminado.", "Notificación")
+
   }
 }
